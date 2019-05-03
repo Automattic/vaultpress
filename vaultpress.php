@@ -536,10 +536,39 @@ class VaultPress {
 		}
 	}
 
+	function jetpack_connect_ui() {
+		if ( $this->is_jetpack_registered() ) {
+			$this->jetpack_connect_ui_connected();
+		} else {
+			$this->jetpack_connect_ui_disconnected();
+		}
+	}
+
+	function jetpack_connect_ui_disconnected() {
+		$jetpack_connect = new Jetpack_Connect();
+		$connect_url = $jetpack_connect->build_connect_url();
+		var_dump( $connect_url );
+		?>
+		<div>
+			Jetpack is not connected!
+			<a href="<?php echo $connect_url; ?>">Connect it</a>
+		</div>
+		<?php
+	}
+
+	function jetpack_connect_ui_connected() {
+		?>
+		<div>
+			Jetpack is connected!
+			<button>Disconnect it</button>
+		</div>
+		<?php
+	}
+
 	function ui_register() {
+		$this->jetpack_connect_ui();
 		$jetpack_email = $this->get_jetpack_email();
 		$jetpack_available = ! empty( $jetpack_email ) && ! is_wp_error( $jetpack_email );
-
 ?>
 	<div id="vp-wrap" class="wrap">
 		<div id="vp-head">
@@ -2350,6 +2379,10 @@ JS;
 		return !empty( $key ) && !empty( $secret );
 	}
 
+	function is_jetpack_registered() {
+		return Jetpack_Connect::is_active();
+	}
+
 	function clear_connection() {
 		$this->delete_option( 'connection' );
 		$this->delete_option( 'connection_error_code' );
@@ -2677,3 +2710,6 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 }
 
 include_once( dirname( __FILE__ ) . '/cron-tasks.php' );
+
+// Jetpack connect lib
+require_once( 'jetpack-connect/jetpack-connect.php' );
