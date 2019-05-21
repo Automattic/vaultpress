@@ -201,11 +201,6 @@
       "description": "When a feature is broken and / or not performing as intended"
     },
     {
-      "name": "[Type] Dotcom Merge",
-      "color": "bfdadc",
-      "description": "Is this PR bringing a WordPress.com commit to your plugin?"
-    },
-    {
       "name": "[Type] Duplicate",
       "color": "c7def8",
       "description": ""

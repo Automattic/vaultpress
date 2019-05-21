@@ -13,12 +13,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Automattic/jetpack-standards.git",
-                "reference": "1e2c2de0e30556afe3028fa526ee17ca2c2d8559"
+                "reference": "1453b5eafe67bc82d0361e4d76a113cbd11c8149"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Automattic/jetpack-standards/zipball/1e2c2de0e30556afe3028fa526ee17ca2c2d8559",
-                "reference": "1e2c2de0e30556afe3028fa526ee17ca2c2d8559",
+                "url": "https://api.github.com/repos/Automattic/jetpack-standards/zipball/1453b5eafe67bc82d0361e4d76a113cbd11c8149",
+                "reference": "1453b5eafe67bc82d0361e4d76a113cbd11c8149",
                 "shasum": ""
             },
             "require": {
@@ -26,7 +26,7 @@
                 "dealerdirect/phpcodesniffer-composer-installer": "0.5.0",
                 "phpcompatibility/phpcompatibility-wp": "2.0.0",
                 "sirbrillig/phpcs-variable-analysis": "2.6.4",
-                "wp-coding-standards/wpcs": "2.1.0"
+                "wp-coding-standards/wpcs": "2.1.1"
             },
             "type": "composer-plugin",
             "extra": {
@@ -42,7 +42,7 @@
                 "GPL-2.0-or-later"
             ],
             "description": "Adds basic Jetpack standards to a project.",
-            "time": "2019-05-21T16:32:23+00:00"
+            "time": "2019-05-21T18:08:46+00:00"
         },
         {
             "name": "dealerdirect/phpcodesniffer-composer-installer",
@@ -368,16 +368,16 @@
         },
         {
             "name": "wp-coding-standards/wpcs",
-            "version": "2.1.0",
+            "version": "2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards.git",
-                "reference": "8c7a2e7682de9ef5955251874b639deda51ef470"
+                "reference": "bd9c33152115e6741e3510ff7189605b35167908"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WordPress-Coding-Standards/WordPress-Coding-Standards/zipball/8c7a2e7682de9ef5955251874b639deda51ef470",
-                "reference": "8c7a2e7682de9ef5955251874b639deda51ef470",
+                "url": "https://api.github.com/repos/WordPress-Coding-Standards/WordPress-Coding-Standards/zipball/bd9c33152115e6741e3510ff7189605b35167908",
+                "reference": "bd9c33152115e6741e3510ff7189605b35167908",
                 "shasum": ""
             },
             "require": {
@@ -409,7 +409,7 @@
                 "standards",
                 "wordpress"
             ],
-            "time": "2019-04-08T10:53:57+00:00"
+            "time": "2019-05-21T02:50:00+00:00"
         }
     ],
     "aliases": [],
