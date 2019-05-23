@@ -605,7 +605,6 @@ class VaultPress {
 
 		<?php $this->ui_delete_vp_settings_button(); ?>
 	</div>
-		<div>Hello</div>
 <?php
 	}
 
