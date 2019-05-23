@@ -20,11 +20,11 @@ if ( is_readable( $autoloader ) ) {
 	require $autoloader;
 } else {
 	if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+		$support_url = 'https://vaultpress.com/contact/';
 		error_log(
 			sprintf(
-			/* translators: Placeholder is a link to a support document. */
-				__( 'Your installation of Jetpack is incomplete. If you installed Jetpack from GitHub, please refer to <a href="%1$s" target="_blank" rel="noopener noreferrer">this document</a> to set up your development environment.', 'jetpack' ),
-				esc_url( 'https://github.com/Automattic/jetpack/blob/master/docs/development-environment.md' )
+				__( 'Your installation of VaultPress is incomplete. Please reach out to %s for support.', 'jetpack' ),
+				$support_url
 			)
 		);
 	}
