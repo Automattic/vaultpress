@@ -14,6 +14,24 @@
 // don't call the file directly
 defined( 'ABSPATH' ) or die();
 
+// Load all the packages.
+$autoloader = plugin_dir_path( __FILE__ ) . '/vendor/autoload.php';
+if ( is_readable( $autoloader ) ) {
+	require $autoloader;
+} else {
+	if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+		error_log(
+			sprintf(
+			/* translators: Placeholder is a link to a support document. */
+				__( 'Your installation of Jetpack is incomplete. If you installed Jetpack from GitHub, please refer to <a href="%1$s" target="_blank" rel="noopener noreferrer">this document</a> to set up your development environment.', 'jetpack' ),
+				esc_url( 'https://github.com/Automattic/jetpack/blob/master/docs/development-environment.md' )
+			)
+		);
+	}
+	add_action( 'admin_notices', 'jetpack_admin_missing_autoloader' );
+	return;
+}
+
 class VaultPress {
 	var $option_name          = 'vaultpress';
 	var $auto_register_option = 'vaultpress_auto_register';
@@ -571,6 +589,8 @@ class VaultPress {
 		</div><!-- #vp_registration -->
 
         <?php $this->ui_delete_vp_settings_button(); ?>
+		<?php $logo = new Jetpack\Assets\Logo(); ?>
+		<?php echo $logo->render(); ?>
     </div><!-- #vp-head -->
 <?php
 	}
@@ -585,6 +605,7 @@ class VaultPress {
 
 		<?php $this->ui_delete_vp_settings_button(); ?>
 	</div>
+		<div>Hello</div>
 <?php
 	}
 
