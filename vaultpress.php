@@ -14,23 +14,9 @@
 // don't call the file directly
 defined( 'ABSPATH' ) or die();
 
-// Load all the packages.
-$autoloader = plugin_dir_path( __FILE__ ) . '/vendor/autoload.php';
-if ( is_readable( $autoloader ) ) {
-	require $autoloader;
-} else {
-	if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
-		$support_url = 'https://vaultpress.com/contact/';
-		error_log(
-			sprintf(
-				__( 'Your installation of VaultPress is incomplete. Please reach out to %s for support.', 'jetpack' ),
-				$support_url
-			)
-		);
-	}
-	add_action( 'admin_notices', 'jetpack_admin_missing_autoloader' );
-	return;
-}
+require_once( JETPACK__PLUGIN_DIR . 'packages/autoloader-loader/src/AutoloaderLoader.php' );
+$loader = new \Jetpack\Assets\AutoloaderLoader();
+$loader->load_autoloader();
 
 class VaultPress {
 	var $option_name          = 'vaultpress';
