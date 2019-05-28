@@ -598,8 +598,7 @@ class VaultPress {
 		</div><!-- #vp_registration -->
 
         <?php $this->ui_delete_vp_settings_button(); ?>
-		<?php $logo = new Jetpack\Assets\Logo(); ?>
-		<?php echo $logo->render(); ?>
+        <?php $this->ui_logo(); ?>
     </div><!-- #vp-head -->
 <?php
 	}
@@ -613,6 +612,7 @@ class VaultPress {
 		?>
 
 		<?php $this->ui_delete_vp_settings_button(); ?>
+		<?php $this->ui_logo(); ?>
 	</div>
 <?php
 	}
@@ -624,6 +624,7 @@ class VaultPress {
 
 			<p><?php printf( __( 'Yikes! We&rsquo;ve run into a serious issue and can&rsquo;t connect to %1$s.', 'vaultpress' ), esc_html( $this->get_option( 'hostname' ) ) ); ?></p>
 			<p><?php printf( __( 'Please make sure that your website is accessible via the Internet. If you&rsquo;re still having issues please <a href="%1$s">contact the VaultPress&nbsp;Safekeepers</a>.', 'vaultpress' ), 'http://vaultpress.com/contact/' ); ?></p>
+			<?php $this->ui_logo(); ?>
 		</div>
 	<?php
 	}
@@ -678,6 +679,11 @@ class VaultPress {
             </div>
         </div><!-- .card-grid -->
 		<?php
+	}
+
+	function ui_logo() {
+		$logo = new Jetpack\Assets\Logo();
+		echo $logo->render();
 	}
 
 	function get_config( $key ) {
