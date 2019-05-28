@@ -92,10 +92,10 @@ class VaultPress {
 
 		return $instance;
 	}
-	
+
 	static function register( $registration_key ) {
 		$vp = self::init();
-		
+
 		$nonce = wp_create_nonce( 'vp_register_' . $registration_key );
 		$args = array( 'registration_key' =>  $registration_key, 'nonce' => $nonce );
 		$response = $vp->contact_service( 'register', $args );
@@ -103,11 +103,11 @@ class VaultPress {
 		// Check for an error
 		if ( ! empty( $response['faultCode'] ) )
 			return new WP_Error( $response['faultCode'], $response['faultString'] );
-		
+
 		// Validate result
 		if ( empty( $response['key'] ) || empty( $response['secret'] ) || empty( $response['nonce'] ) || $nonce != $response['nonce'] )
 			return new WP_Error( 1, __( 'There was a problem trying to register your VaultPress subscription.' ) );
-		
+
 		// Store the result, force a connection test.
 		$vp->update_option( 'key', $response['key'] );
 		$vp->update_option( 'secret', $response['secret'] );
@@ -122,7 +122,7 @@ class VaultPress {
 
 		// force a connection check after an activation
 		$this->clear_connection();
-		
+
 		if ( get_option( 'vaultpress_auto_connect' ) ) {
 			$this->register_via_jetpack( true );
 		}
@@ -174,7 +174,7 @@ class VaultPress {
 			$this->update_option( 'db_version', $this->db_version );
 			$this->clear_connection();
 		}
-		
+
 		if ( $current_db_version < 4 ) {
 			$this->update_firewall();
 			$this->update_option( 'db_version', $this->db_version );
@@ -306,7 +306,7 @@ class VaultPress {
 		if ( class_exists( 'Jetpack' ) ) {
 			$hook = add_submenu_page( 'jetpack', 'VaultPress', 'VaultPress', 'manage_options', 'vaultpress', array( $this, 'ui' ) );
 		} else {
-			$hook = add_menu_page( 'VaultPress', 'VaultPress', 'manage_options', 'vaultpress', array( $this, 'ui' ), 'div' );
+			$hook = add_menu_page( 'VaultPress1', 'VaultPress', 'manage_options', 'vaultpress', array( $this, 'ui' ), 'div' );
 		}
 
 		add_action( "load-$hook", array( $this, 'ui_load' ) );
@@ -563,43 +563,71 @@ class VaultPress {
 	}
 
 	function ui_register() {
-		$jetpack_email = $this->get_jetpack_email();
-		$jetpack_available = ! empty( $jetpack_email ) && ! is_wp_error( $jetpack_email );
+		?>
+		<div id="jp-plugin-container">
 
-?>
-	<div id="vp-wrap" class="wrap">
-		<div id="vp-head">
-			<h2>VaultPress <a href="https://dashboard.vaultpress.com/" class="button-secondary" target="_blank"><?php _e( 'Visit Dashboard', 'vaultpress' ); ?></a></h2>
-		</div>
+			<div class="jp-masthead">
+				<div class="jp-masthead__inside-container">
+					<div class="jp-masthead__logo-container">
+						<a class="jp-masthead__logo-link" href="https://vaultpress.com">
+							<img src="<?php echo esc_url( plugins_url( 'images/vaultpress.svg', __FILE__ ) ); ?>" alt="VaultPress">
+						</a>
+					</div>
+					<div class="jp-masthead__nav">
+						<div class="dops-button-group">
+							<a href="https://dashboard.vaultpress.com" type="button" class="dops-button is-compact">
+								<?php _e( 'Visit Dashboard', 'vaultpress' ); ?>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
 
-		<div id="vp_registration" <?php if ( $jetpack_available ) { echo 'class="jetpack-available"'; } ?>>
+			<div class="vp-wrap">
 
-			<div class="grid">
-				<div class="vp_card-dark half">
-					<h2><?php _e( 'The VaultPress plugin <strong>requires a subscription</strong>.', 'vaultpress' ); ?></h2>
-					<p class="vp_card-description"><?php _e( 'Get realtime backups, automated security scanning, and support from WordPress&nbsp;experts.', 'vaultpress' ); ?></p>
-					<a class="vp_button-mega" href="https://vaultpress.com/plugin/?utm_source=plugin-unregistered&amp;utm_medium=view-plans-and-pricing&amp;utm_campaign=1.0-plugin"><?php _e( 'View plans and pricing&nbsp;&raquo;', 'vaultpress' ); ?></a>
+				<div class="vp-notice__wide">
+					<div class="dops-card">
+						<img src="<?php echo esc_url( plugins_url( 'images/security.svg', __FILE__ ) ); ?>" alt="VaultPress">
+						<h2><?php _e( 'The VaultPress plugin requires a subscription.', 'vaultpress' ); ?></h2>
+						<p><?php _e( 'Get realtime backups, automated security scanning, and support from WordPress&nbsp;experts.', 'vaultpress' ); ?></p>
+						<a class="dops-button is-primary" href="https://vaultpress.com/plugin/?utm_source=plugin-unregistered&amp;utm_medium=view-plans-and-pricing&amp;utm_campaign=1.0-plugin"><?php _e( 'View plans and pricing', 'vaultpress' ); ?></a>
+					</div>
 				</div>
 
-				<div class="vp_card half">
-					<h2><?php _e( 'Already have a VaultPress&nbsp;account?', 'vaultpress' ); ?></h2>
-					<p class="vp_card-description"><?php _e( 'Paste your registration key&nbsp;below:', 'vaultpress' ); ?></p>
-					<form method="post" action="">
-						<fieldset>
-							<textarea class="vp_input-register" placeholder="<?php echo esc_attr( __( 'Enter your key here...', 'vaultpress' ) ); ?>" name="registration_key"></textarea>
-							<button class="vp_button-secondary"><?php _e( 'Register ', 'vaultpress' ); ?></button>
-							<input type="hidden" name="action" value="register" />
-							<?php wp_nonce_field( 'vaultpress_register' ); ?>
-						</fieldset>
-					</form>
-		</div>
-			</div><!-- .card-grid -->
-		</div><!-- #vp_registration -->
+				<div class="jp-dash-section-header">
+					<div class="jp-dash-section-header__label">
+						<h2 class="jp-dash-section-header__name">
+							<?php esc_html_e( 'Management', 'vaultpress' ); ?>
+						</h2>
+					</div>
+				</div>
 
-        <?php $this->ui_delete_vp_settings_button(); ?>
-        <?php $this->ui_logo(); ?>
-    </div><!-- #vp-head -->
-<?php
+				<div class="vp-row">
+					<div class="vp-col">
+						<div class="dops-card dops-section-header is-compact">
+							<?php esc_html_e( 'Registration key', 'vaultpress' ) ?>
+						</div>
+						<div class="dops-card">
+							<p><?php _e( 'Paste your registration key&nbsp;below:', 'vaultpress' ); ?></p>
+							<form method="post" action="">
+								<fieldset>
+									<textarea class="dops-textarea" placeholder="<?php echo esc_attr( __( 'Enter your key here...', 'vaultpress' ) ); ?>" name="registration_key"></textarea>
+									<button class="dops-button"><?php _e( 'Register ', 'vaultpress' ); ?></button>
+									<input type="hidden" name="action" value="register" />
+									<?php wp_nonce_field( 'vaultpress_register' ); ?>
+								</fieldset>
+							</form>
+						</div>
+					</div>
+					<div class="vp-col">
+						<?php $this->ui_delete_vp_settings_button(); ?>
+					</div>
+				</div>
+
+			</div>
+
+	    </div>
+		<?php
 	}
 
 	function ui_main() {
@@ -611,7 +639,6 @@ class VaultPress {
 		?>
 
 		<?php $this->ui_delete_vp_settings_button(); ?>
-		<?php $this->ui_logo(); ?>
 	</div>
 <?php
 	}
@@ -623,7 +650,6 @@ class VaultPress {
 
 			<p><?php printf( __( 'Yikes! We&rsquo;ve run into a serious issue and can&rsquo;t connect to %1$s.', 'vaultpress' ), esc_html( $this->get_option( 'hostname' ) ) ); ?></p>
 			<p><?php printf( __( 'Please make sure that your website is accessible via the Internet. If you&rsquo;re still having issues please <a href="%1$s">contact the VaultPress&nbsp;Safekeepers</a>.', 'vaultpress' ), 'http://vaultpress.com/contact/' ); ?></p>
-			<?php $this->ui_logo(); ?>
 		</div>
 	<?php
 	}
@@ -656,28 +682,29 @@ class VaultPress {
 
 	function ui_delete_vp_settings_button() {
 		?>
-        <div class="grid" style="margin-top: 10px;">
-            <div class="vp_card half">
-				<?php
-				if ( isset( $_GET['delete-vp-settings'] ) && 1 == (int) $_GET['delete-vp-settings'] ) {
-					?>
-                    <p><?php _e( 'All VaultPress settings have been deleted.', 'vaultpress' ); ?></p>
-					<?php
-				} else {
-					?>
-                    <h2><?php _e( 'Delete VaultPress Settings', 'vaultpress' ); ?></h2>
-                    <p class="vp_card-description"><?php _e( 'Warning: Clicking this button will reset ALL VaultPress options in the database.', 'vaultpress' ); ?></p>
-                    <form method="post" action="">
-                        <button class="vp_button-secondary"><?php _e( 'Delete all VaultPress Settings', 'vaultpress' ); ?></button>
-                        <input type="hidden" name="action" value="delete-vp-settings"/>
-						<?php wp_nonce_field( 'delete_vp_settings' ); ?>
-                    </form>
-					<?php
-				}
-				?>
-            </div>
-        </div><!-- .card-grid -->
+		<div class="dops-card dops-section-header is-compact">
+			<?php _e( 'Settings deletion', 'vaultpress' ); ?>
+		</div>
 		<?php
+		if ( isset( $_GET['delete-vp-settings'] ) && 1 == (int) $_GET['delete-vp-settings'] ) {
+			?>
+			<div class="dops-card">
+                <p><?php _e( 'All VaultPress settings have been deleted.', 'vaultpress' ); ?></p>
+			</div>
+			<?php
+		} else {
+			?>
+            <div class="dops-card">
+	            <p><?php _e( 'Click this button to reset all VaultPress options in the database.', 'vaultpress' ); ?></p>
+	            <p><strong><?php esc_html_e( 'Warning: this process is irreversible.', 'vaultpress' ) ?></strong></p>
+	            <form method="post" action="">
+		            <button class="dops-button is-scary"><?php _e( 'Delete all VaultPress settings', 'vaultpress' ); ?></button>
+		            <input type="hidden" name="action" value="delete-vp-settings"/>
+		            <?php wp_nonce_field( 'delete_vp_settings' ); ?>
+	            </form>
+            </div>
+			<?php
+		}
 	}
 
 	function ui_logo() {
@@ -896,14 +923,14 @@ class VaultPress {
 	// Handle Notifying VaultPress of PostMeta changes via newfangled metadata functions
 	function postmeta_insert_handler( $meta_id, $post_id, $meta_key, $meta_value='' ) {
 		if ( in_array( $meta_key, $this->get_post_meta_name_ignore() ) )
-			return;	
+			return;
 
 		$this->add_ping( 'db', array( 'postmeta' => $meta_id ) );
 	}
 
 	function postmeta_modification_handler( $meta_id, $object_id, $meta_key, $meta_value ) {
 		if ( in_array( $meta_key, $this->get_post_meta_name_ignore() ) )
-			return;	
+			return;
 
 		if ( !is_array( $meta_id ) )
 			return $this->add_ping( 'db', array( 'postmeta' => $meta_id ) );
@@ -916,27 +943,27 @@ class VaultPress {
 	function postmeta_action_handler( $meta_id, $post_id = null, $meta_key = null ) {
 		if ( in_array( $meta_key, $this->get_post_meta_name_ignore() ) )
 			return;
-	
+
 		if ( !is_array($meta_id) )
 			return $this->add_ping( 'db', array( 'postmeta' => $meta_id ) );
 		foreach ( $meta_id as $id )
 			$this->add_ping( 'db', array( 'postmeta' => $id ) );
 	}
-	
+
 	// WooCommerce notifications
 	function woocommerce_tax_rate_handler( $id ) {
 		$this->generic_change_handler( 'woocommerce_tax_rates', array( 'tax_rate_id' => $id ) );
 		$this->block_change_handler( 'woocommerce_tax_rate_locations', array( 'tax_rate_id' => $id ) );
 	}
-	
+
 	function woocommerce_order_item_handler( $id )      { $this->generic_change_handler( 'woocommerce_order_items',          array( 'order_item_id' => $id ) ); }
 	function woocommerce_order_item_meta_handler( $id ) { $this->generic_change_handler( 'woocommerce_order_itemmeta',       array( 'meta_id' => $id ) ); }
 	function woocommerce_attribute_handler( $id )       { $this->generic_change_handler( 'woocommerce_attribute_taxonomies', array( 'attribute_id' => $id ) ); }
-	
+
 	function generic_change_handler( $table, $key ) {
 		$this->add_ping( 'db', array( $table => $key ) );
 	}
-	
+
 	function block_change_handler( $table, $query ) {
 		$this->add_ping( 'db', array( "bulk~{$table}" => $query ) );
 	}
@@ -1135,7 +1162,7 @@ class VaultPress {
 		$data = false;
 		$https_error = null;
 		$retry = 2;
-		$protocol = 'https'; 
+		$protocol = 'https';
 		do {
 			$retry--;
 			$args['sslverify'] = 'https' == $protocol ? true : false;
@@ -1161,13 +1188,13 @@ class VaultPress {
 					$error_message = 'Unable to find an HTTP transport that supports SSL verification';
 				elseif ( is_wp_error( $https_error ) )
 					$error_message = $https_error->get_error_message();
-				
+
 				$this->update_option( 'connection', time() );
 				$this->update_option( 'connection_error_code', 99 );
 				$this->update_option( 'connection_error_message', sprintf( __('Warning: The VaultPress plugin is using an insecure protocol because it cannot verify the identity of the VaultPress server. Please contact your hosting provider, and ask them to check that SSL certificate verification is correctly configured on this server. The request failed with the following error: "%s". If you&rsquo;re still having issues please <a href="%1$s">contact the VaultPress&nbsp;Safekeepers</a>.', 'vaultpress' ), esc_html( $error_message ), 'http://vaultpress.com/contact/' ) );
 			}
 		}
-	
+
 		return $data;
 	}
 
@@ -1191,16 +1218,16 @@ class VaultPress {
 
 		if ( $data ) {
 			return $data;
-		} else { 
+		} else {
 			return null;
 		}
 	}
-	
+
 	// Update local cache of VP plan settings, based on a ping or connection test result
 	function update_plan_settings( $message ) {
-		if ( array_key_exists( 'do_backups', $message ) )	
+		if ( array_key_exists( 'do_backups', $message ) )
 			$this->update_option( 'do_not_backup', ( false === $message['do_backups'] ) || ( '0' === $message['do_backups'] ) );
-			
+
 		if ( array_key_exists( 'do_backup_pings', $message ) )
 			$this->update_option( 'do_not_send_backup_pings', ( false === $message['do_backup_pings'] ) || ( '0' === $message['do_backup_pings'] ) );
 	}
@@ -1287,7 +1314,7 @@ class VaultPress {
 
 	function get_login_tokens() {
 		// By default the login token is valid for 30 minutes.
-		$nonce_life = $this->get_option( 'nonce_life' ) ? $this->get_option( 'nonce_life' ) : 1800; 
+		$nonce_life = $this->get_option( 'nonce_life' ) ? $this->get_option( 'nonce_life' ) : 1800;
 		$salt = wp_salt( 'nonce' ) . md5( $this->get_option( 'secret' ) );
 		$nonce_life /= 2;
 
@@ -1364,14 +1391,14 @@ JS;
 		foreach( $chars as $i => $v )
 			$chars[$i] = sprintf( '_[%d]', $random[$v] );
 
-		$code = preg_replace( 
-			"#[\n\r\t]#", 
-			'', 
-			sprintf( $js_code, 
-				join( '|', array_keys( $whitelist ) ), 
-				join( ',', array_keys( $random ) ), 
-				join( '+"")+(', $chars ) 
-			) 
+		$code = preg_replace(
+			"#[\n\r\t]#",
+			'',
+			sprintf( $js_code,
+				join( '|', array_keys( $whitelist ) ),
+				join( ',', array_keys( $random ) ),
+				join( '+"")+(', $chars )
+			)
 		);
 		echo $code;
 	}
@@ -1415,7 +1442,7 @@ JS;
 			global $__vp_validate_error;
 			die( 'invalid api call signature [' . base64_encode( serialize( $__vp_validate_error ) ) . ']' );
 		}
-		
+
 		if ( !empty( $_GET['ge'] ) ) {
 			// "ge" -- "GET encoding"
 			if ( '1' === $_GET['ge'] )
@@ -1539,7 +1566,7 @@ JS;
 					foreach ( $wpdb->get_results( "SHOW VARIABLES" ) as $row )
 						$mvars["$row->Variable_name"] = $row->Value;
 				}
-				
+
 				$this->update_plan_settings( $_POST );
 
 				$ms_global_tables = array_merge( $wpdb->global_tables, $wpdb->ms_global_tables );
@@ -1624,7 +1651,7 @@ JS;
 					if ( false === strpos( $upload_url, 'http' ) )
 						$upload_url = untrailingslashit( site_url() ) . $upload_url;
 				}
-				
+
 				if ( defined( 'VP_DISABLE_UNAME' ) && VP_DISABLE_UNAME ) {
 					$uname_a = '';
 					$uname_n = '';
@@ -2009,25 +2036,25 @@ JS;
 				return $cidr;
 			}
 		}
-		
+
 		return false;
 	}
-	
+
 	function check_firewall() {
 		global $__vp_validate_error;
 
 		$stored_cidrs = $this->get_option( 'service_ips_cidr' );
 		$stored_ext_cidrs = get_option( 'vaultpress_service_ips_external_cidr' );
-		
+
 		$one_day_ago = time() - 86400;
 		if ( empty( $stored_cidrs ) || empty( $stored_ext_cidrs ) || $stored_cidrs['updated'] < $one_day_ago ) {
 			$cidrs = $this->update_firewall();
 		}
-		
+
 		if ( empty( $cidrs ) ) {
 			$cidrs = array_merge( $stored_cidrs['data'], $stored_ext_cidrs['data'] );
 		}
-		
+
 		if ( empty( $cidrs ) ) {
 			//	No up-to-date info; fall back on the old methods.
 			if ( $this->do_c_block_firewall() ) {
@@ -2037,8 +2064,8 @@ JS;
 				return false;
 			}
 		}
-		
-		//	Figure out possible remote IPs		
+
+		//	Figure out possible remote IPs
 		$remote_ips = array();
 		if ( !empty( $_SERVER['REMOTE_ADDR'] ) )
 			$remote_ips['REMOTE_ADDR'] = $_SERVER['REMOTE_ADDR'];
@@ -2078,7 +2105,7 @@ JS;
 				}
 			}
 		}
-		
+
 		$__vp_validate_error = array( 'error' => 'remote_addr_fail', 'detail' => $remote_ips );
 		return false;
 	}
@@ -2098,14 +2125,14 @@ JS;
 
 		return true;
 	}
-	
+
 	function do_c_block_firewall() {
 		//	Perform the firewall check by class-c ip blocks
 		$rxs = $this->get_option( 'service_ips' );
 		$service_ips_external = get_option( 'vaultpress_service_ips_external' );
 
 		if ( !empty( $rxs['data'] ) && !empty( $service_ips_external['data'] ) )
-			$rxs = array_merge( $rxs['data'], $service_ips_external['data'] );		
+			$rxs = array_merge( $rxs['data'], $service_ips_external['data'] );
 		if ( ! $rxs )
 			return false;
 		return $this->validate_ip_address( $rxs );
@@ -2186,7 +2213,7 @@ JS;
 				die( base64_encode( $response ) );
 			else if ( '2' === $_GET['re'] )
 				die( str_rot13( $response ) );
-			else 
+			else
 				die( $response );
 		}
 		list( $usec, $sec ) = explode( " ", microtime() );
@@ -2212,7 +2239,7 @@ JS;
 			die( base64_encode( serialize( $r )  ) );
 		else if ( '2' === $_GET['re'] )
 			die( str_rot13( serialize( $r )  ) );
-		else 
+		else
 			die( serialize( $r ) );
 	}
 
@@ -2594,16 +2621,16 @@ JS;
 		add_action( 'deleted_option', array( $this, 'option_handler' ), 1 );
 		add_action( 'updated_option', array( $this, 'option_handler' ), 1 );
 		add_action( 'added_option',   array( $this, 'option_handler' ), 1 );
-		
+
 		$this->add_woocommerce_actions();
 		$this->add_vp_required_filters();
 	}
-	
+
 	function add_woocommerce_actions() {
 		add_action( 'woocommerce_tax_rate_deleted', array( $this, 'woocommerce_tax_rate_handler' ), 10, 1 );
 		add_action( 'woocommerce_tax_rate_updated', array( $this, 'woocommerce_tax_rate_handler' ), 10, 1 );
 		add_action( 'woocommerce_tax_rate_added', array( $this, 'woocommerce_tax_rate_handler' ), 10, 1 );
-		
+
 		add_action( 'woocommerce_new_order_item', array( $this, 'woocommerce_order_item_handler' ), 10, 1 );
 		add_action( 'woocommerce_update_order_item', array( $this, 'woocommerce_order_item_handler' ), 10, 1 );
 		add_action( 'woocommerce_delete_order_item', array( $this, 'woocommerce_order_item_handler' ), 10, 1 );
@@ -2630,7 +2657,7 @@ JS;
 		// VaultPress likes being first in line
 		add_filter( 'pre_update_option_active_plugins', array( $this, 'load_first' ) );
 	}
-	
+
 	function get_jetpack_email() {
 		if ( !class_exists('Jetpack') )
 			return false;
@@ -2658,13 +2685,13 @@ JS;
 
 		return new WP_Error( $xml->getErrorCode(), $xml->getErrorMessage() );
 	}
-	
+
 	function register_via_jetpack( $already_purchased = false ) {
 		$registration_key = $this->get_key_via_jetpack( $already_purchased );
 		if ( is_wp_error( $registration_key ) ) {
 			return $registration_key;
 		}
-		
+
 		return self::register( $registration_key );
 	}
 }
