@@ -8,21 +8,13 @@
     	"issues": "https://github.com/Automattic/vaultpress/issues"
     },
     "require": {
-        "automattic/jetpack-autoloader-loader": "master-dev",
-        "automattic/jetpack-logo": "master-dev"
+        "automattic/jetpack-logo": "1.0.0"
     },
     "require-dev": {},
     "repositories": [
         {
             "type": "path",
-            "url": "../../jetpack/packages/logo",
-            "options": {
-                "symlink": true
-            }
-        },
-        {
-            "type": "path",
-            "url": "../../jetpack/packages/autoloader-loader",
+            "url": "../../../../../packages/logo",
             "options": {
                 "symlink": true
             }
