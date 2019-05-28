@@ -14,9 +14,32 @@
 // don't call the file directly
 defined( 'ABSPATH' ) or die();
 
-require_once( JETPACK__PLUGIN_DIR . 'packages/autoloader-loader/src/AutoloaderLoader.php' );
-$loader = new \Jetpack\Assets\AutoloaderLoader();
-$loader->load_autoloader();
+/**
+ * Load all the packages.
+ *
+ * We want to fail gracefully if `composer install` has not been executed yet, so we are checking for the autoloader.
+ * If the autoloader is not present, let's log the failure, pause VaultPress, and display a nice admin notice.
+ */
+$jetpack_autoloader = dirname( __FILE__ ) . '/vendor/autoload.php';
+if ( is_readable( $jetpack_autoloader ) ) {
+	require $jetpack_autoloader;
+} else {
+	add_action( 'admin_notices', 'vaultpress_admin_missing_autoloader' );
+	return;
+}
+
+/**
+ * Outputs an admin notice for folks running VaultPress without having run `composer install`.
+ */
+function vaultpress_admin_missing_autoloader() { ?>
+	<div class="notice notice-error is-dismissible">
+		<p>
+			<?php _e( 'Your installation of VaultPress is incomplete. If you installed it from GitHub, please run <code>composer install</code>.', 'vaultpress' ); ?>
+		</p>
+	</p>
+	</div>
+	<?php
+}
 
 class VaultPress {
 	var $option_name          = 'vaultpress';
