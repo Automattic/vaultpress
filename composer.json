@@ -10,7 +10,9 @@
     "require": {
         "automattic/jetpack-logo": "1.0.0"
     },
-    "require-dev": {},
+    "require-dev": {
+        "automattic/jetpack-standards": "master-dev"
+    },
     "repositories": [
         {
             "type": "path",
