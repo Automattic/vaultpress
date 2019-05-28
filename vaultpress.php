@@ -682,6 +682,9 @@ class VaultPress {
 	}
 
 	function ui_logo() {
+		?>
+		<div class="clearfix"></div>
+		<?php
 		$logo = new Jetpack\Assets\Logo();
 		echo $logo->render();
 	}
