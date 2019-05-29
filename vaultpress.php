@@ -424,7 +424,25 @@ class VaultPress {
 			$this->ui_message( $error_message, 'error' );
 	}
 
+	/**
+	 * Adds the main wrappers and the header, and defers controls to ui_render to decide which view to render.
+	 */
 	function ui() {
+		?>
+			<div id="jp-plugin-container">
+				<?php $this->ui_masthead(); ?>
+				<div class="vp-wrap">
+					<?php $this->ui_render() ?>
+				</div>
+				<?php $this->ui_footer(); ?>
+			</div>
+		<?php
+	}
+
+	/**
+	 * Decides which UI view to render and executes it.
+	 */
+	function ui_render() {
 		if ( $this->is_localhost() ) {
 			$this->update_option( 'connection', time() );
 			$this->update_option( 'connection_error_code', 'error_localhost' );
@@ -433,30 +451,32 @@ class VaultPress {
 			return;
 		}
 
-		if ( !empty( $_GET['error'] ) ) {
+		if ( ! empty( $_GET[ 'error' ] ) ) {
 			$this->error_notice();
 			$this->clear_connection();
 		}
 
-		if ( !$this->is_registered() ) {
+		if ( ! $this->is_registered() ) {
 			$this->ui_register();
 			return;
 		}
 
 		$status = $this->contact_service( 'status' );
-		if ( !$status ) {
+		if ( ! $status ) {
 			$error_code = $this->get_option( 'connection_error_code' );
-			if ( 0 == $error_code )
+			if ( 0 == $error_code ) {
 				$this->ui_fatal_error();
-			else
+			} else {
 				$this->ui_register();
+			}
 			return;
 		}
 
 		$ticker = $this->contact_service( 'ticker' );
-		if ( is_array( $ticker ) && isset( $ticker['faultCode'] ) ) {
+		if ( is_array( $ticker ) && isset( $ticker[ 'faultCode' ] ) ) {
 			$this->error_notice();
 			$this->ui_register();
+
 			return;
 		}
 
@@ -564,94 +584,125 @@ class VaultPress {
 
 	function ui_register() {
 		?>
-		<div id="jp-plugin-container">
+			<div class="vp-notice__wide">
+				<div class="dops-card">
+					<img src="<?php echo esc_url( plugins_url( 'images/security.svg', __FILE__ ) ); ?>" alt="VaultPress">
+					<h2><?php _e( 'The VaultPress plugin requires a subscription.', 'vaultpress' ); ?></h2>
+					<p><?php _e( 'Get realtime backups, automated security scanning, and support from WordPress&nbsp;experts.', 'vaultpress' ); ?></p>
+					<a class="dops-button is-primary" href="https://vaultpress.com/plugin/?utm_source=plugin-unregistered&amp;utm_medium=view-plans-and-pricing&amp;utm_campaign=1.0-plugin"><?php _e( 'View plans and pricing', 'vaultpress' ); ?></a>
+				</div>
+			</div>
 
-			<div class="jp-masthead">
-				<div class="jp-masthead__inside-container">
-					<div class="jp-masthead__logo-container">
-						<a class="jp-masthead__logo-link" href="https://vaultpress.com">
-							<img src="<?php echo esc_url( plugins_url( 'images/vaultpress.svg', __FILE__ ) ); ?>" alt="VaultPress">
-						</a>
+			<div class="jp-dash-section-header">
+				<div class="jp-dash-section-header__label">
+					<h2 class="jp-dash-section-header__name">
+						<?php esc_html_e( 'Management', 'vaultpress' ); ?>
+					</h2>
+				</div>
+			</div>
+
+			<div class="vp-row">
+				<div class="vp-col">
+					<div class="dops-card dops-section-header is-compact">
+						<?php esc_html_e( 'Registration key', 'vaultpress' ) ?>
 					</div>
+					<div class="dops-card">
+						<p><?php _e( 'Paste your registration key&nbsp;below:', 'vaultpress' ); ?></p>
+						<form method="post" action="">
+							<fieldset>
+								<textarea class="dops-textarea" placeholder="<?php echo esc_attr( __( 'Enter your key here...', 'vaultpress' ) ); ?>" name="registration_key"></textarea>
+								<button class="dops-button"><?php _e( 'Register ', 'vaultpress' ); ?></button>
+								<input type="hidden" name="action" value="register" />
+								<?php wp_nonce_field( 'vaultpress_register' ); ?>
+							</fieldset>
+						</form>
+					</div>
+				</div>
+				<div class="vp-col">
+					<?php $this->ui_delete_vp_settings_button(); ?>
+				</div>
+			</div>
+		<?php
+	}
+
+	/**
+	 * Renders the top header.
+	 *
+	 * @param bool $show_nav Whether to show navigation.
+	 */
+	function ui_masthead( $show_nav = true ) {
+		?>
+		<div class="jp-masthead">
+			<div class="jp-masthead__inside-container">
+				<div class="jp-masthead__logo-container">
+					<a class="jp-masthead__logo-link" href="https://vaultpress.com">
+						<img src="<?php echo esc_url( plugins_url( 'images/vaultpress.svg', __FILE__ ) ); ?>" alt="VaultPress">
+					</a>
+				</div>
+				<?php if ( $show_nav ) : ?>
 					<div class="jp-masthead__nav">
 						<div class="dops-button-group">
-							<a href="https://dashboard.vaultpress.com" type="button" class="dops-button is-compact">
+							<a href="https://dashboard.vaultpress.com" class="dops-button is-compact" target="_blank" rel="noopener noreferrer">
 								<?php _e( 'Visit Dashboard', 'vaultpress' ); ?>
 							</a>
 						</div>
 					</div>
-				</div>
+				<?php endif; ?>
 			</div>
+		</div>
+		<?php
+	}
 
-			<div class="vp-wrap">
-
-				<div class="vp-notice__wide">
-					<div class="dops-card">
-						<img src="<?php echo esc_url( plugins_url( 'images/security.svg', __FILE__ ) ); ?>" alt="VaultPress">
-						<h2><?php _e( 'The VaultPress plugin requires a subscription.', 'vaultpress' ); ?></h2>
-						<p><?php _e( 'Get realtime backups, automated security scanning, and support from WordPress&nbsp;experts.', 'vaultpress' ); ?></p>
-						<a class="dops-button is-primary" href="https://vaultpress.com/plugin/?utm_source=plugin-unregistered&amp;utm_medium=view-plans-and-pricing&amp;utm_campaign=1.0-plugin"><?php _e( 'View plans and pricing', 'vaultpress' ); ?></a>
-					</div>
-				</div>
-
-				<div class="jp-dash-section-header">
-					<div class="jp-dash-section-header__label">
-						<h2 class="jp-dash-section-header__name">
-							<?php esc_html_e( 'Management', 'vaultpress' ); ?>
-						</h2>
-					</div>
-				</div>
-
-				<div class="vp-row">
-					<div class="vp-col">
-						<div class="dops-card dops-section-header is-compact">
-							<?php esc_html_e( 'Registration key', 'vaultpress' ) ?>
-						</div>
-						<div class="dops-card">
-							<p><?php _e( 'Paste your registration key&nbsp;below:', 'vaultpress' ); ?></p>
-							<form method="post" action="">
-								<fieldset>
-									<textarea class="dops-textarea" placeholder="<?php echo esc_attr( __( 'Enter your key here...', 'vaultpress' ) ); ?>" name="registration_key"></textarea>
-									<button class="dops-button"><?php _e( 'Register ', 'vaultpress' ); ?></button>
-									<input type="hidden" name="action" value="register" />
-									<?php wp_nonce_field( 'vaultpress_register' ); ?>
-								</fieldset>
-							</form>
-						</div>
-					</div>
-					<div class="vp-col">
-						<?php $this->ui_delete_vp_settings_button(); ?>
-					</div>
-				</div>
-
+	/**
+	 * Renders the footer.
+	 */
+	function ui_footer() {
+		?>
+		<div class="jp-footer">
+			<div class="jp-footer__a8c-attr-container">
+				<a href="http://localhost/wp-admin/admin.php?page=jetpack_about">
+					<svg role="img" class="jp-footer__a8c-attr" x="0" y="0" viewBox="0 0 935 38.2" enable-background="new 0 0 935 38.2" aria-labelledby="a8c-svg-title"><title id="a8c-svg-title">An Automattic Airline</title>
+						<path d="M317.1 38.2c-12.6 0-20.7-9.1-20.7-18.5v-1.2c0-9.6 8.2-18.5 20.7-18.5 12.6 0 20.8 8.9 20.8 18.5v1.2C337.9 29.1 329.7 38.2 317.1 38.2zM331.2 18.6c0-6.9-5-13-14.1-13s-14 6.1-14 13v0.9c0 6.9 5 13.1 14 13.1s14.1-6.2 14.1-13.1V18.6zM175 36.8l-4.7-8.8h-20.9l-4.5 8.8h-7L157 1.3h5.5L182 36.8H175zM159.7 8.2L152 23.1h15.7L159.7 8.2zM212.4 38.2c-12.7 0-18.7-6.9-18.7-16.2V1.3h6.6v20.9c0 6.6 4.3 10.5 12.5 10.5 8.4 0 11.9-3.9 11.9-10.5V1.3h6.7V22C231.4 30.8 225.8 38.2 212.4 38.2zM268.6 6.8v30h-6.7v-30h-15.5V1.3h37.7v5.5H268.6zM397.3 36.8V8.7l-1.8 3.1 -14.9 25h-3.3l-14.7-25 -1.8-3.1v28.1h-6.5V1.3h9.2l14 24.4 1.7 3 1.7-3 13.9-24.4h9.1v35.5H397.3zM454.4 36.8l-4.7-8.8h-20.9l-4.5 8.8h-7l19.2-35.5h5.5l19.5 35.5H454.4zM439.1 8.2l-7.7 14.9h15.7L439.1 8.2zM488.4 6.8v30h-6.7v-30h-15.5V1.3h37.7v5.5H488.4zM537.3 6.8v30h-6.7v-30h-15.5V1.3h37.7v5.5H537.3zM569.3 36.8V4.6c2.7 0 3.7-1.4 3.7-3.4h2.8v35.5L569.3 36.8 569.3 36.8zM628 11.3c-3.2-2.9-7.9-5.7-14.2-5.7 -9.5 0-14.8 6.5-14.8 13.3v0.7c0 6.7 5.4 13 15.3 13 5.9 0 10.8-2.8 13.9-5.7l4 4.2c-3.9 3.8-10.5 7.1-18.3 7.1 -13.4 0-21.6-8.7-21.6-18.3v-1.2c0-9.6 8.9-18.7 21.9-18.7 7.5 0 14.3 3.1 18 7.1L628 11.3zM321.5 12.4c1.2 0.8 1.5 2.4 0.8 3.6l-6.1 9.4c-0.8 1.2-2.4 1.6-3.6 0.8l0 0c-1.2-0.8-1.5-2.4-0.8-3.6l6.1-9.4C318.7 11.9 320.3 11.6 321.5 12.4L321.5 12.4z"></path>
+						<path d="M37.5 36.7l-4.7-8.9H11.7l-4.6 8.9H0L19.4 0.8H25l19.7 35.9H37.5zM22 7.8l-7.8 15.1h15.9L22 7.8zM82.8 36.7l-23.3-24 -2.3-2.5v26.6h-6.7v-36H57l22.6 24 2.3 2.6V0.8h6.7v35.9H82.8z"></path>
+						<path d="M719.9 37l-4.8-8.9H694l-4.6 8.9h-7.1l19.5-36h5.6l19.8 36H719.9zM704.4 8l-7.8 15.1h15.9L704.4 8zM733 37V1h6.8v36H733zM781 37c-1.8 0-2.6-2.5-2.9-5.8l-0.2-3.7c-0.2-3.6-1.7-5.1-8.4-5.1h-12.8V37H750V1h19.6c10.8 0 15.7 4.3 15.7 9.9 0 3.9-2 7.7-9 9 7 0.5 8.5 3.7 8.6 7.9l0.1 3c0.1 2.5 0.5 4.3 2.2 6.1V37H781zM778.5 11.8c0-2.6-2.1-5.1-7.9-5.1h-13.8v10.8h14.4c5 0 7.3-2.4 7.3-5.2V11.8zM794.8 37V1h6.8v30.4h28.2V37H794.8zM836.7 37V1h6.8v36H836.7zM886.2 37l-23.4-24.1 -2.3-2.5V37h-6.8V1h6.5l22.7 24.1 2.3 2.6V1h6.8v36H886.2zM902.3 37V1H935v5.6h-26v9.2h20v5.5h-20v10.1h26V37H902.3z"></path>
+					</svg>
+				</a>
 			</div>
-
-	    </div>
+			<ul class="jp-footer__links">
+				<li class="jp-footer__link-item">
+					<a href="https://vaultpress.com" class="jp-footer__link" title="<?php esc_attr_e( 'VaultPress version', 'vaultpress' ) ?>" target="_blank" rel="noopener noreferrer">
+						<?php printf( 'VaultPress %s', $this->plugin_version ); ?>
+					</a>
+				</li>
+				<li class="jp-footer__link-item">
+					<a href="https://wordpress.com/tos/" class="jp-footer__link" title="<?php esc_attr_e( 'Terms of service', 'vaultpress' ) ?>" target="_blank" rel="noopener noreferrer">
+						Terms
+					</a>
+				</li>
+			</ul>
+		</div>
 		<?php
 	}
 
 	function ui_main() {
-?>
-	<div id="vp-wrap" class="vp-wrap">
-		<?php
-			$response = base64_decode( $this->contact_service( 'plugin_ui' ) );
-			echo $response;
-		?>
-
-		<?php $this->ui_delete_vp_settings_button(); ?>
-	</div>
-<?php
+		$response = base64_decode( $this->contact_service( 'plugin_ui' ) );
+		echo $response;
+		$this->ui_delete_vp_settings_button();
 	}
 
 	function ui_fatal_error() {
-	?>
-		<div id="vp-wrap" class="vp-wrap">
-			<h2>VaultPress</h2>
-
-			<p><?php printf( __( 'Yikes! We&rsquo;ve run into a serious issue and can&rsquo;t connect to %1$s.', 'vaultpress' ), esc_html( $this->get_option( 'hostname' ) ) ); ?></p>
-			<p><?php printf( __( 'Please make sure that your website is accessible via the Internet. If you&rsquo;re still having issues please <a href="%1$s">contact the VaultPress&nbsp;Safekeepers</a>.', 'vaultpress' ), 'http://vaultpress.com/contact/' ); ?></p>
-		</div>
-	<?php
+		$this->render_notice(
+			sprintf(
+				'<strong>' . __( 'We can\'t connect to %1$s.', 'vaultpress' ) . '</strong><br/>' .
+				__( 'Please make sure that your website is accessible via the Internet. Please contact the VaultPress support if you still have issues.' ),
+				esc_html( $this->get_option( 'hostname' ) )
+			),
+			'is-warning',
+			array(
+				'label' => __( 'Contact support' ),
+				'url' => 'https://vaultpress.com/contact/',
+			)
+		);
 	}
 
 	function ui_message( $message, $type = 'notice', $heading = '' ) {
@@ -670,14 +721,51 @@ class VaultPress {
 					break;
 			}
 		}
-?>
+		?>
 		<div id="vp-notice" class="vp-notice vp-<?php echo $type; ?> wrap clearfix">
 			<div class="vp-message">
 				<h3><?php echo $heading; ?></h3>
 				<p><?php echo $message; ?></p>
 			</div>
 		</div>
-<?php
+		<?php
+	}
+
+	/**
+	 * Renders a notice. Can have
+	 *
+	 * @param string $content Notice main content.
+	 * @param string $level Can be is-info, is-warning, is-error. By default, it's is-info.
+	 * @param array  $action  {
+	 *     Arguments to display a linked action button in the notice.
+	 *
+	 *     @type string $label The action button label.
+	 *     @type string $url   The action button link.
+	 * }
+	 */
+	function render_notice( $content, $level = 'is-info', $action = array() ) {
+		$allowed_html = array(
+			'a' => array( 'href' => true, 'target' => 'blank', 'rel' => 'noopener noreferrer' ),
+			'br' => true,
+			'strong' => true,
+		);
+		?>
+			<div class="dops-notice <?php echo esc_attr( $level ) ?>">
+				<span class="dops-notice__icon-wrapper">
+					<svg class="gridicon gridicons-info dops-notice__icon" height="24" width="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+						<g><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"></path></g>
+					</svg>
+				</span>
+				<span class="dops-notice__content">
+					<span class="dops-notice__text"><?php echo wp_kses( $content, $allowed_html ) ?></span>
+				</span>
+				<?php if ( ! empty( $action ) ) : ?>
+					<a class="dops-notice__action" href="<?php echo esc_attr( $action['url'] ) ?>" target="_blank" rel="noopener noreferrer">
+						<span><?php echo esc_html( $action['label'] ) ?></span>
+					</a>
+				<?php endif; ?>
+			</div>
+		<?php
 	}
 
 	function ui_delete_vp_settings_button() {
