@@ -20,9 +20,9 @@ defined( 'ABSPATH' ) or die();
  * We want to fail gracefully if `composer install` has not been executed yet, so we are checking for the autoloader.
  * If the autoloader is not present, let's log the failure, pause VaultPress, and display a nice admin notice.
  */
-$jetpack_autoloader = dirname( __FILE__ ) . '/vendor/autoload.php';
-if ( is_readable( $jetpack_autoloader ) ) {
-	require $jetpack_autoloader;
+$loader = dirname( __FILE__ ) . '/vendor/autoload.php';
+if ( is_readable( $loader ) ) {
+	require $loader;
 } else {
 	add_action( 'admin_notices', 'vaultpress_admin_missing_autoloader' );
 	return;
