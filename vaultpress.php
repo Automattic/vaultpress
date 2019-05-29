@@ -36,7 +36,6 @@ function vaultpress_admin_missing_autoloader() { ?>
 		<p>
 			<?php _e( 'Your installation of VaultPress is incomplete. If you installed it from GitHub, please run <code>composer install</code>.', 'vaultpress' ); ?>
 		</p>
-	</p>
 	</div>
 	<?php
 }
