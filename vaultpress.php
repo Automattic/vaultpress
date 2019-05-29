@@ -685,7 +685,7 @@ class VaultPress {
 		?>
 		<div class="clearfix"></div>
 		<?php
-		$logo = new Jetpack\Assets\Logo();
+		$logo = new Automattic\Jetpack\Assets\Logo();
 		echo $logo->render();
 	}
 
