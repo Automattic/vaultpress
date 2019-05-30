@@ -416,12 +416,14 @@ class VaultPress {
 		$error_message = $this->get_option( 'connection_error_message' );
 
 		// link to the VaultPress page if we're not already there
-		if ( !isset( $_GET['page'] ) || 'vaultpress' != $_GET['page'] )
+		if ( !isset( $_GET['page'] ) || 'vaultpress' != $_GET['page'] ) {
 			$error_message .= ' ' . sprintf( '<a href="%s">%s</a>', admin_url( 'admin.php?page=vaultpress' ), __( 'Visit&nbsp;the&nbsp;VaultPress&nbsp;page' , 'vaultpress') );
+		}
 
 		$screen = get_current_screen();
-		if ( !in_array( $screen->id, array( 'about', 'about-user', 'about-network' ) ) && !empty( $error_message ) )
+		if ( !in_array( $screen->id, array( 'about', 'about-user', 'about-network' ) ) && !empty( $error_message ) ) {
 			$this->ui_message( $error_message, 'error' );
+		}
 	}
 
 	/**
@@ -721,14 +723,11 @@ class VaultPress {
 					break;
 			}
 		}
-		?>
-		<div id="vp-notice" class="vp-notice vp-<?php echo $type; ?> wrap clearfix">
-			<div class="vp-message">
-				<h3><?php echo $heading; ?></h3>
-				<p><?php echo $message; ?></p>
-			</div>
-		</div>
-		<?php
+
+		$this->render_notice(
+			"<strong>$heading</strong><br/>$message",
+			'is-error'
+		);
 	}
 
 	/**
