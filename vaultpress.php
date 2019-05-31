@@ -430,11 +430,12 @@ class VaultPress {
 	 * Adds the main wrappers and the header, and defers controls to ui_render to decide which view to render.
 	 */
 	function ui() {
+		$ui_state = $this->ui_render();
 		?>
 			<div id="jp-plugin-container">
-				<?php $this->ui_masthead(); ?>
+				<?php $this->ui_masthead( $ui_state[ 'dashboard_link' ] ); ?>
 				<div class="vp-wrap">
-					<?php $this->ui_render() ?>
+					<?php echo $ui_state[ 'ui' ]; // This content is sanitized when it's produced. ?>
 				</div>
 				<?php $this->ui_footer(); ?>
 			</div>
@@ -443,14 +444,23 @@ class VaultPress {
 
 	/**
 	 * Decides which UI view to render and executes it.
+	 *
+	 * @return array $args {
+	 *     An array of options to render the dashboard.
+	 *
+	 *     @type string $ui             Dashboard markup.
+	 *     @type string $dashboard_link Whether to show the link to the VaultPress dashboard.
+	 * }
 	 */
 	function ui_render() {
+		ob_start();
+
 		if ( $this->is_localhost() ) {
 			$this->update_option( 'connection', time() );
 			$this->update_option( 'connection_error_code', 'error_localhost' );
 			$this->update_option( 'connection_error_message', 'Hostnames such as localhost or 127.0.0.1 can not be reached by vaultpress.com and will not work with the service. Sites must be publicly accessible in order to work with VaultPress.' );
 			$this->error_notice();
-			return;
+			return array( 'ui' => ob_get_clean(), 'dashboard_link' => false );
 		}
 
 		if ( ! empty( $_GET[ 'error' ] ) ) {
@@ -460,7 +470,7 @@ class VaultPress {
 
 		if ( ! $this->is_registered() ) {
 			$this->ui_register();
-			return;
+			return array( 'ui' => ob_get_clean(), 'dashboard_link' => true );
 		}
 
 		$status = $this->contact_service( 'status' );
@@ -471,23 +481,24 @@ class VaultPress {
 			} else {
 				$this->ui_register();
 			}
-			return;
+			return array( 'ui' => ob_get_clean(), 'dashboard_link' => 0 != $error_code );
 		}
 
 		$ticker = $this->contact_service( 'ticker' );
 		if ( is_array( $ticker ) && isset( $ticker[ 'faultCode' ] ) ) {
 			$this->error_notice();
 			$this->ui_register();
-
-			return;
+			return array( 'ui' => ob_get_clean(), 'dashboard_link' => true );
 		}
 
 		$this->ui_main();
+		return array( 'ui' => ob_get_clean(), 'dashboard_link' => true );
 	}
 
 	function ui_load() {
-		if ( !current_user_can( 'manage_options' ) )
+		if ( ! current_user_can( 'manage_options' ) ) {
 			return;
+		}
 
 		if ( isset( $_POST['action'] ) && 'delete-vp-settings' == $_POST['action'] ) {
 			check_admin_referer( 'delete_vp_settings' );
