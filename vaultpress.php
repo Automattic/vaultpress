@@ -689,10 +689,13 @@ class VaultPress {
 				</li>
 				<li class="jp-footer__link-item">
 					<a href="https://wordpress.com/tos/" class="jp-footer__link" title="<?php esc_attr_e( 'Terms of service', 'vaultpress' ) ?>" target="_blank" rel="noopener noreferrer">
-						Terms
+						<?php esc_html_e( 'Terms', 'vaultpress' ); ?>
 					</a>
 				</li>
 			</ul>
+			<div class="jp-power">
+				<span class="jp-power__text"><?php esc_html_e( 'Powered by', 'vaultpress') ?></span> <?php echo $this->ui_logo(); ?>
+			</div>
 		</div>
 		<?php
 	}
@@ -805,12 +808,12 @@ class VaultPress {
 		}
 	}
 
+	/**
+	 * Render the Jetpack logo
+	 */
 	function ui_logo() {
-		?>
-		<div class="clearfix"></div>
-		<?php
 		$logo = new Automattic\Jetpack\Assets\Logo();
-		echo $logo->render();
+		return $logo->render();
 	}
 
 	function get_config( $key ) {

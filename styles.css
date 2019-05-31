@@ -1152,8 +1152,15 @@ Progress Bars
 	margin-bottom: 0;
 }
 
-/* --- Jetpack logo --- */
-.jetpack-logo {
-	float: right;
-	margin: 20px 20px 0;
+/**
+ * Jetpack logo
+ */
+.jp-power {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.jp-power__text {
+	color: #888;
+	margin-right: 10px;
 }
