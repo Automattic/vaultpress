@@ -763,10 +763,10 @@ class VaultPress {
 			'strong' => true,
 		);
 		?>
-			<div class="dops-notice <?php echo esc_attr( $level ) ?>">
+			<div class="dops-notice vp-notice <?php echo esc_attr( $level ) ?>">
 				<span class="dops-notice__icon-wrapper">
 					<svg class="gridicon gridicons-info dops-notice__icon" height="24" width="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-						<g><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"></path></g>
+						<path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
 					</svg>
 				</span>
 				<span class="dops-notice__content">
