@@ -740,7 +740,11 @@ class VaultPress {
 
 		$this->render_notice(
 			"<strong>$heading</strong><br/>$message",
-			'is-error'
+			'is-error',
+			array(),
+			'jetpack' !== get_current_screen()->parent_base
+				? "notice notice-$type"
+				: ''
 		);
 	}
 
@@ -755,15 +759,16 @@ class VaultPress {
 	 *     @type string $label The action button label.
 	 *     @type string $url   The action button link.
 	 * }
+	 * @param string $classes This is added as a CSS class to the root node. Useful to pass WP core classes for notices.
 	 */
-	function render_notice( $content, $level = 'is-info', $action = array() ) {
+	function render_notice( $content, $level = 'is-info', $action = array(), $classes = '' ) {
 		$allowed_html = array(
 			'a' => array( 'href' => true, 'target' => 'blank', 'rel' => 'noopener noreferrer' ),
 			'br' => true,
 			'strong' => true,
 		);
 		?>
-			<div class="dops-notice vp-notice <?php echo esc_attr( $level ) ?>">
+			<div class="dops-notice vp-notice <?php echo esc_attr( "$level $classes" ) ?>">
 				<span class="dops-notice__icon-wrapper">
 					<svg class="gridicon gridicons-info dops-notice__icon" height="24" width="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
 						<path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
