@@ -455,7 +455,7 @@ class VaultPress {
 	function ui_render() {
 		ob_start();
 
-		if ( $this->is_localhost() ) {
+		if ( !$this->is_localhost() ) {
 			$this->update_option( 'connection', time() );
 			$this->update_option( 'connection_error_code', 'error_localhost' );
 			$this->update_option( 'connection_error_message', 'Hostnames such as localhost or 127.0.0.1 can not be reached by vaultpress.com and will not work with the service. Sites must be publicly accessible in order to work with VaultPress.' );
@@ -789,7 +789,7 @@ class VaultPress {
 	function ui_delete_vp_settings_button() {
 		?>
 		<div class="dops-card dops-section-header is-compact">
-			<?php _e( 'Settings deletion', 'vaultpress' ); ?>
+			<?php _e( 'Settings reset', 'vaultpress' ); ?>
 		</div>
 		<?php
 		if ( isset( $_GET['delete-vp-settings'] ) && 1 == (int) $_GET['delete-vp-settings'] ) {
@@ -800,15 +800,18 @@ class VaultPress {
 			<?php
 		} else {
 			?>
-            <div class="dops-card">
-	            <p><?php _e( 'Click this button to reset all VaultPress options in the database.', 'vaultpress' ); ?></p>
-	            <p><strong><?php esc_html_e( 'Warning: this process is irreversible.', 'vaultpress' ) ?></strong></p>
-	            <form method="post" action="">
-		            <button class="dops-button is-scary"><?php _e( 'Delete all VaultPress settings', 'vaultpress' ); ?></button>
-		            <input type="hidden" name="action" value="delete-vp-settings"/>
-		            <?php wp_nonce_field( 'delete_vp_settings' ); ?>
-	            </form>
-            </div>
+			<div class="dops-card">
+				<p><?php _e( 'Click this button to reset all VaultPress options in the database.', 'vaultpress' ); ?></p>
+				<p><strong><?php esc_html_e( 'Warning: this process is irreversible.', 'vaultpress' ) ?></strong></p>
+				<form
+					onsubmit="return confirm( '<?php esc_html_e( 'Do you really want to reset all options?', 'vaultpress' ) ?>' );"
+					method="post"
+					action="">
+					<button class="dops-button is-scary"><?php _e( 'Delete all VaultPress settings', 'vaultpress' ); ?></button>
+					<input type="hidden" name="action" value="delete-vp-settings"/>
+					<?php wp_nonce_field( 'delete_vp_settings' ); ?>
+				</form>
+			</div>
 			<?php
 		}
 	}
