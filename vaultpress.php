@@ -455,7 +455,7 @@ class VaultPress {
 	function ui_render() {
 		ob_start();
 
-		if ( !$this->is_localhost() ) {
+		if ( $this->is_localhost() ) {
 			$this->update_option( 'connection', time() );
 			$this->update_option( 'connection_error_code', 'error_localhost' );
 			$this->update_option( 'connection_error_message', 'Hostnames such as localhost or 127.0.0.1 can not be reached by vaultpress.com and will not work with the service. Sites must be publicly accessible in order to work with VaultPress.' );
