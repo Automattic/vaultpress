@@ -125,20 +125,24 @@ Mini normalize
 }
 
 .vp-wrap {
-	max-width: 95%;
 	margin: 0 auto;
+	text-align: left;
+	max-width: 65rem;
+	padding: 1.5rem;
 }
 
-.vp-row {
-	display: flex;
-}
+@media only screen and (min-width: 660px) {
+	.vp-row {
+		display: flex;
+	}
 
-.vp-row .vp-col {
-	flex-basis: 50%;
-}
+	.vp-row .vp-col {
+		flex-basis: 50%;
+	}
 
-.vp-row .vp-col:first-child {
-	margin-right: 1rem;
+	.vp-row .vp-col:first-child {
+		margin-right: 1rem;
+	}
 }
 
 .vp-notice__wide .dops-card {
