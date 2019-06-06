@@ -722,13 +722,16 @@ class VaultPress {
 	}
 
 	function ui_message( $message, $type = 'notice', $heading = '' ) {
+		$level = 'is-warning';
 		if ( empty( $heading ) ) {
 			switch ( $type ) {
 				case 'error':
+					$level = 'is-error';
 					$heading = __( 'Oops... there seems to be a problem.', 'vaultpress' );
 					break;
 
 				case 'success':
+					$level = 'is-success';
 					$heading = __( 'Yay! Things look good.', 'vaultpress' );
 					break;
 
@@ -740,7 +743,7 @@ class VaultPress {
 
 		$this->render_notice(
 			"<strong>$heading</strong><br/>$message",
-			'is-error',
+			$level,
 			array(),
 			'jetpack' !== get_current_screen()->parent_base
 				? "notice notice-$type"
