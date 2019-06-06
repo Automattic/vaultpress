@@ -978,6 +978,11 @@ Progress Bars
 	color: #888;
 	margin-right: 10px;
 }
+
+.jetpack-logo {
+	vertical-align: middle;
+}
+
 .jetpack-logo__icon-circle,
 .jetpack-logo__text {
 	fill: #636d75;
