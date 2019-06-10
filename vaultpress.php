@@ -26,7 +26,10 @@ if ( is_readable( $autoloader ) ) {
 } else {
 	if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
 		error_log(
-			__( 'Your installation of VaultPress is incomplete. If you installed it from GitHub, please run <code>composer install</code>.', 'vaultpress' )
+			wp_kses(
+				__( 'Your installation of VaultPress is incomplete. If you installed it from GitHub, please run <code>composer install</code>.', 'vaultpress' ),
+				array( 'code' => true )
+			);
 		);
 	}
 	/**
