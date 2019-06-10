@@ -32,12 +32,13 @@ if ( is_readable( $autoloader ) ) {
 	/**
 	 * Outputs an admin notice for folks running VaultPress without having run `composer install`.
 	 */
-	function vaultpress_admin_missing_autoloader() { ?>
-        <div class="notice notice-error is-dismissible">
-            <p>
+	function vaultpress_admin_missing_autoloader() {
+		?>
+		<div class="notice notice-error is-dismissible">
+			<p>
 				<?php _e( 'Your installation of VaultPress is incomplete. If you installed it from GitHub, please run <code>composer install</code>.', 'vaultpress' ); ?>
-            </p>
-        </div>
+			</p>
+		</div>
 		<?php
 	}
 	add_action( 'admin_notices', 'vaultpress_admin_missing_autoloader' );
