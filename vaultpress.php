@@ -39,7 +39,12 @@ if ( is_readable( $autoloader ) ) {
 		?>
 		<div class="notice notice-error is-dismissible">
 			<p>
-				<?php _e( 'Your installation of VaultPress is incomplete. If you installed it from GitHub, please run <code>composer install</code>.', 'vaultpress' ); ?>
+				<?php
+					echo wp_kses(
+						__( 'Your installation of VaultPress is incomplete. If you installed it from GitHub, please run <code>composer install</code>.', 'vaultpress' ),
+						array( 'code' => true )
+					);
+				?>
 			</p>
 		</div>
 		<?php
