@@ -20,9 +20,9 @@ defined( 'ABSPATH' ) or die();
  * We want to fail gracefully if `composer install` has not been executed yet, so we are checking for the autoloader.
  * If the autoloader is not present, let's log the failure, pause VaultPress, and display a nice admin notice.
  */
-$autoloader = dirname( plugin_basename( __FILE__ ) ) . 'vendor/autoload_packages.php';
-if ( is_readable( $autoloader ) ) {
-	require $autoloader;
+$loader = dirname( plugin_basename( __FILE__ ) ) . 'vendor/autoload_packages.php';
+if ( is_readable( $loader ) ) {
+	require $loader;
 } else {
 	if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
 		error_log(
