@@ -152,6 +152,22 @@ Mini normalize
 	.vp-row .vp-col:first-child {
 		margin-right: 1rem;
 	}
+
+	.vp-notice__wide img {
+		float: left;
+		margin-right: 2.5em;
+	}
+}
+
+@media only screen and (max-width: 660px) {
+	.vp-notice__wide {
+		text-align: center;
+	}
+
+	.vp-notice__wide img,
+	.vp-notice__wide p {
+		margin-bottom: 2em;
+	}
 }
 
 .vp-notice__wide .dops-card {
@@ -161,8 +177,6 @@ Mini normalize
 
 .vp-notice__wide img {
 	width: 200px;
-	float: left;
-	margin-right: 2.5em;
 }
 
 .vp-notice__wide h2 {
