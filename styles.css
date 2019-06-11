@@ -12,6 +12,14 @@ Mini normalize
 	-webkit-font-smoothing: antialiased;
 }
 
+#jp-plugin-container #vp-head,
+#jp-plugin-container hr {
+	display: none;
+}
+#jp-plugin-container #vp-wrap {
+	margin-bottom: 24px;
+}
+
 /**
  * Layout
  */
@@ -555,7 +563,6 @@ Helpers
 	color: #fff;
 	color: rgba(255,255,255,0.9);
 	font-size: 12px;
-	text-shadow: 0 -1px 0 rgba(0,0,0,0.3);
 	line-height: 24px;
 	text-shadow: none;
 	border-radius: 2px;
