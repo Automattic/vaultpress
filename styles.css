@@ -29,7 +29,8 @@ Mini normalize
 	height: auto;
 }
 
-.jetpack_page_vaultpress #wpcontent {
+.jetpack_page_vaultpress #wpcontent,
+.toplevel_page_vaultpress #wpcontent {
 	padding-left: 0;
 }
 
