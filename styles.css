@@ -20,6 +20,10 @@ Mini normalize
 	margin-bottom: 24px;
 }
 
+.notice {
+	display: none;
+}
+
 /**
  * Layout
  */
