@@ -48,7 +48,16 @@ if ( version_compare( phpversion(), VAULTPRESS__MINIMUM_PHP_VERSION, '<' ) ) {
 
 		?>
 		<div class="notice notice-error is-dismissible">
-			<p><?php esc_html_e( 'VaultPress requires a more recent version of PHP and has been paused. Please update PHP to continue enjoying VaultPress.', 'vaultpress' ); ?></p>
+			<p>
+			<?php
+				printf(
+					/* translators: Placeholders are numbers, versions of PHP in use on the site, and required by VaultPress. */
+					esc_html__( 'Your version of PHP (%1$s) is lower than the version required by VaultPress (%2$s). Please update PHP to continue enjoying VaultPress.', 'vaultpress' ),
+					esc_html( phpversion() ),
+					esc_html( VAULTPRESS__MINIMUM_PHP_VERSION )
+				);
+			?>
+			</p>
 			<p class="button-container">
 				<?php
 				printf(
