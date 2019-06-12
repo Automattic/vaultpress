@@ -29,7 +29,7 @@ install:
   - yarn && yarn build-php
 
 script:
-  - yarn php:compatibility *
+  - yarn php:compatibility **/*.php
 
 notifications:
   email: false
