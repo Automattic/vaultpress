@@ -272,7 +272,7 @@ if ( empty( $args ) ) {
 	success( "Success! New release branches were created and pushed to the repo. \n- dev: $release_branch\n- production: $release_branch_prod\n" );
 } elseif ( isset( $args['update'] ) ) {
 	$version = $args['update'];
-	if ( empty( $update ) ) {
+	if ( empty( $version ) ) {
 		$version = prompt( "What version are you updating?\n" );
 	}
 
