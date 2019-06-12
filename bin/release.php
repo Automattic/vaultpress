@@ -53,7 +53,9 @@ function purge_dev_files() {
 	$ignored = file( dirname( dirname( __FILE__ ) ) . '/.svnignore', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES );
 
 	foreach ( $ignored as $file_pattern ) {
-		execute_command( sprintf( 'rm -rf %s', $file_pattern ) );
+		if ( ! preg_match( '/^#/', $file_pattern ) ) {
+			execute_command( sprintf( 'rm -rf %s', $file_pattern ) );
+		}
 	}
 }
 
