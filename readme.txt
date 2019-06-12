@@ -55,7 +55,7 @@ Yes, VaultPress supports Multisite installs. Each site will require its own subs
 
 **Enhancements**
 
-*
+* Dashboard: redesign the main VaultPress dashboard.
 
 **Bug fixes**
 
