@@ -8,8 +8,11 @@
 .nvmrc
 .phpcs.xml.dist
 .prettierrc
+.travis.yml
 renovate.json
+bin
 node_modules
+vendor/automattic/jetpack-standards
 vendor/bin
 vendor/dealerdirect
 vendor/phpcompatibility
