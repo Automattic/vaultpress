@@ -64,7 +64,7 @@ function purge_dev_files() {
  * @param array $options
  * @return bool|string
  */
-function prompt( $question = '', $options = [], $show_options = true ) {
+function prompt( $question = '', $options = array(), $show_options = true ) {
 	if ( empty( $question ) ) {
 		usage();
 	};
@@ -192,28 +192,28 @@ function usage( $exit_value = 1, $message = '' ) {
 	}
 
 	$usage = <<<"USAGE"
-php {$GLOBALS['argv'][0]} --new=[major|point] --update=RELEASE_NUM 
+php {$GLOBALS['argv'][0]} --new=[major|point] --update=RELEASE_NUM
 
-  Plugin release management scripts. 
-   
-  Can do things like: 
+  Plugin release management scripts.
+
+  Can do things like:
   - Create a new release branch in GitHub
   - Update an existing release branch in GitHub
   - Publish a release branch as a tag/release on GitHub
   - Publish a GitHub tag/release to the wp.org svn
-  
+
     --list
-        List all release branches and tags 
+        List all release branches and tags
 
     --new RELEASE_NUM
         New release?
 
     --update RELEASE_NUM
         Update an existing release in GitHub.
-        
-    --publish RELEASE_NUM [github|svn] 
+
+    --publish RELEASE_NUM [github|svn]
         Create a new release in GitHub or wp.org SVN
-        
+
 
 USAGE;
 
@@ -234,12 +234,12 @@ if ( ! empty( $changes ) ) {
 	exit;
 }
 
-$opts = [
+$opts = array(
 	'list',
 	'new::',
 	'update::',
 //	'publish::', @todo
-];
+);
 $args = getopt( '', $opts );
 
 // Gotta tell us something
