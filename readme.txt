@@ -4,6 +4,7 @@ Tags: security, malware, virus, archive, back up, back ups, backup, backups, sca
 Requires at least: 3.2
 Tested up to: 5.1.1
 Stable tag: 1.9.10
+Requires PHP: 5.3
 License: GPLv2
 
 VaultPress is a subscription service offering real-time backup, automated security scanning, and support from WordPress experts.
@@ -30,11 +31,11 @@ View our full list of FAQs at [http://help.vaultpress.com/faq/](http://help.vaul
 
 = What’s included in each plan? =
 
-All plans include automated daily backups (unlimited storage space) of your entire site, 1-click restores, stats, priority support, brute force attack protection, uptime monitoring, spam protection, site migration, and an activity log. 
+All plans include automated daily backups (unlimited storage space) of your entire site, 1-click restores, stats, priority support, brute force attack protection, uptime monitoring, spam protection, site migration, and an activity log.
 
 The Personal and Premium plans are limited to a 30-day backup archive while Professional is unlimited.
 
-The Premium and Professional plans also offer automated security scanning against malware and infiltrations with the Professional plan also offering automated threat resolution. 
+The Premium and Professional plans also offer automated security scanning against malware and infiltrations with the Professional plan also offering automated threat resolution.
 
 [Visit our site](https://vaultpress.com/contact/) for more detail and up-to-date information.
 
@@ -117,7 +118,7 @@ Yes, VaultPress supports Multisite installs. Each site will require its own subs
 = 1.7.9 - 24 Feb 2016 =
 * PHP 7 support. Drop support for PHP 4 and versions of WordPress older than 3.2.
 * Silence PHP errors when attempting to change the execution time limit when PHP is running in safe mode.
-* Prevent database update pings from being stored when not connected to a paid VaultPress account. 
+* Prevent database update pings from being stored when not connected to a paid VaultPress account.
 
 = 1.7.8 - 15 Oct 2015 =
 * Security: Hotfix for Akismet < 3.1.5.
