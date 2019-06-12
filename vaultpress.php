@@ -43,14 +43,17 @@ if ( version_compare( phpversion(), VAULTPRESS__MINIMUM_PHP_VERSION, '<' ) ) {
 	 *
 	 * @since 2.0.0
 	 */
-	function vaultpress_admin_unsupported_php_notice() { ?>
+	function vaultpress_admin_unsupported_php_notice() {
+		$update_php_url = ( function_exists( 'wp_get_update_php_url' ) ? wp_get_update_php_url() : 'https://wordpress.org/support/update-php/' );
+
+		?>
 		<div class="notice notice-error is-dismissible">
 			<p><?php esc_html_e( 'VaultPress requires a more recent version of PHP and has been paused. Please update PHP to continue enjoying VaultPress.', 'vaultpress' ); ?></p>
 			<p class="button-container">
 				<?php
 				printf(
 					'<a class="button button-primary" href="%1$s" target="_blank" rel="noopener noreferrer">%2$s <span class="screen-reader-text">%3$s</span><span aria-hidden="true" class="dashicons dashicons-external"></span></a>',
-					esc_url( wp_get_update_php_url() ),
+					esc_url( $update_php_url ),
 					__( 'Learn more about updating PHP' ),
 					/* translators: accessibility text */
 					__( '(opens in a new tab)' )
