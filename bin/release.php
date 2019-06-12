@@ -15,7 +15,7 @@ function build_or_update_production_release_branch( $version ) {
 	$tmp = '/tmp/build-release';
 	execute_command( sprintf( 'rm -rf %s', escapeshellarg( $tmp ) ), 'Could not clean.' );
 
-	$release_branch = "release/$version";
+	$release_branch      = "release/$version";
 	$release_branch_prod = "release/$version-prod";
 
 	execute_command( sprintf( 'git checkout %s && git pull', escapeshellarg( $release_branch ) ), 'Could not check out to release branch.' );
@@ -28,17 +28,17 @@ function build_or_update_production_release_branch( $version ) {
 	// Create a new local branch if none exists, else checkout to it
 	$branch_exists = execute_command( sprintf( 'git ls-remote --exit-code --heads origin %s', escapeshellarg( $release_branch_prod ) ), '', true );
 	if ( empty( $branch_exists ) ) {
-		execute_command( sprintf( "git checkout -b %s", escapeshellarg( $release_branch_prod ) ), "Could not create local release branch: $release_branch_prod" );
+		execute_command( sprintf( 'git checkout -b %s', escapeshellarg( $release_branch_prod ) ), "Could not create local release branch: $release_branch_prod" );
 	} else {
 		$remote_url = execute_command( 'git remote get-url --all origin', 'Error', true );
-		execute_command( sprintf( 'git clone --depth 1 -b %1s --single-branch %2s %3s', escapeshellarg( trim( $release_branch_prod ) ), escapeshellarg( $remote_url ), escapeshellarg( $tmp ) ), "Could not do it!" );
-		execute_command( sprintf( 'rsync -r --delete --exclude="*.git*" . %s', $tmp ), "Could not rsync." );
+		execute_command( sprintf( 'git clone --depth 1 -b %1s --single-branch %2s %3s', escapeshellarg( trim( $release_branch_prod ) ), escapeshellarg( $remote_url ), escapeshellarg( $tmp ) ), 'Could not do it!' );
+		execute_command( sprintf( 'rsync -r --delete --exclude="*.git*" . %s', $tmp ), 'Could not rsync.' );
 		chdir( $tmp );
 	}
 
 	// Commit and push!
 	execute_command( 'git commit -am "New Build"', 'Could not commit.' );
-	execute_command( sprintf( "git push -u origin %s", escapeshellarg( $release_branch_prod ) ), "Could not push $release_branch_prod to remote." );
+	execute_command( sprintf( 'git push -u origin %s', escapeshellarg( $release_branch_prod ) ), "Could not push $release_branch_prod to remote." );
 }
 
 /**
@@ -61,7 +61,7 @@ function purge_dev_files() {
  * Prompt for user-input strings
  *
  * @param string $question
- * @param array $options
+ * @param array  $options
  * @return bool|string
  */
 function prompt( $question = '', $options = array(), $show_options = true ) {
@@ -71,17 +71,17 @@ function prompt( $question = '', $options = array(), $show_options = true ) {
 
 	needs_action( $question );
 	if ( ! empty( $options ) ) {
-		$options_string = "Your options are: " . implode( ' or ', $options ) . "\n";
+		$options_string = 'Your options are: ' . implode( ' or ', $options ) . "\n";
 		if ( $show_options ) {
 			echo $options_string;
 		}
 	}
 
-	$handle = fopen( 'php://stdin','r' );
-	$line = trim( fgets( $handle ) );
+	$handle = fopen( 'php://stdin', 'r' );
+	$line   = trim( fgets( $handle ) );
 
 	if ( ! empty( $options ) && ! in_array( $line, $options ) ) {
-		fail( "Sorry, that is not a valid input. Try again?" );
+		fail( 'Sorry, that is not a valid input. Try again?' );
 		echo $options_string;
 		prompt( $question, $options, false );
 	}
@@ -99,8 +99,8 @@ function confirm( $question = '' ) {
 	$question = ! empty( $question ) ? $question : "Are you sure you want to do this?  Type 'yes' to continue: ";
 	needs_action( $question );
 
-	$handle = fopen( 'php://stdin','r' );
-	$line = fgets( $handle );
+	$handle = fopen( 'php://stdin', 'r' );
+	$line   = fgets( $handle );
 	if ( trim( $line ) != 'yes' ) {
 		exit;
 	}
@@ -181,7 +181,7 @@ function cleanup( $cleanup_repo = false, $cleanup_remotes = false ) {
 /**
  * How does it work?
  *
- * @param int $exit_value
+ * @param int    $exit_value
  * @param string $message
  */
 function usage( $exit_value = 1, $message = '' ) {
@@ -228,7 +228,7 @@ USAGE;
  */
 
 // Should never be uncommitted changes
-$changes = execute_command( "git status -s --porcelain", 'Uncommitted changes found.', true );
+$changes = execute_command( 'git status -s --porcelain', 'Uncommitted changes found.', true );
 if ( ! empty( $changes ) ) {
 	fail( 'Uncommitted changes found, please clean them up.' );
 	exit;
@@ -238,42 +238,39 @@ $opts = array(
 	'list',
 	'new::',
 	'update::',
-//	'publish::', @todo
+// 'publish::', @todo
 );
 $args = getopt( '', $opts );
 
 // Gotta tell us something
 if ( empty( $args ) ) {
 	usage();
-}
-else if ( isset( $args['list'] ) ) {
-	execute_command( "git branch -l origin release/*", "No release branches found." );
-}
-else if ( isset( $args['new'] ) ) {
+} elseif ( isset( $args['list'] ) ) {
+	execute_command( 'git branch -l origin release/*', 'No release branches found.' );
+} elseif ( isset( $args['new'] ) ) {
 	$version = $args['new'];
 	if ( empty( $version ) ) {
 		$version = prompt( "What version are you releasing?\n" );
 	}
 
-	$release_branch = "release/$version";
+	$release_branch      = "release/$version";
 	$release_branch_prod = "release/$version-prod";
 
 	// Checkout to current origin/master in detached state
-	execute_command( "git fetch origin master", "Could not fetch origin master" );
-	execute_command( "git checkout origin/master", "Could not check out to origin/master" );
+	execute_command( 'git fetch origin master', 'Could not fetch origin master' );
+	execute_command( 'git checkout origin/master', 'Could not check out to origin/master' );
 
 	// Create a new local branch
-	execute_command( sprintf( "git checkout -b %s", escapeshellarg( $release_branch ) ), "Could not create local release branch: $release_branch" );
+	execute_command( sprintf( 'git checkout -b %s', escapeshellarg( $release_branch ) ), "Could not create local release branch: $release_branch" );
 
 	// Push it to remote
-	execute_command( sprintf( "git push -u origin %s", escapeshellarg( $release_branch ) ), "Could not push $release_branch to remote." );
+	execute_command( sprintf( 'git push -u origin %s', escapeshellarg( $release_branch ) ), "Could not push $release_branch to remote." );
 	success( "New dev release branch pushed!\n" );
 
 	build_or_update_production_release_branch( $version );
 
 	success( "Success! New release branches were created and pushed to the repo. \n- dev: $release_branch\n- production: $release_branch_prod\n" );
-}
-else if ( isset( $args['update'] ) ) {
+} elseif ( isset( $args['update'] ) ) {
 	$version = $args['update'];
 	if ( empty( $update ) ) {
 		$version = prompt( "What version are you updating?\n" );
