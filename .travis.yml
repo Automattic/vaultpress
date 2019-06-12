@@ -1,0 +1,32 @@
+# Travis CI Configuration File
+
+# Tell Travis CI we're using PHP
+language: php
+sudo: false
+
+cache:
+  yarn: true
+  directories:
+   - $HOME/.composer/cache/files
+
+matrix:
+  include:
+    - php: 5.6
+    - php: 7.0
+    - php: 7.2
+    - php: 7.3
+
+# Git clone depth
+# By default Travis CI clones repositories to a depth of 50 commits
+git:
+  depth: 1
+
+before_install:
+  - composer self-update
+
+install:
+  - nvm install
+  - yarn && yarn build-php
+
+script:
+  - yarn php:compatibility *
