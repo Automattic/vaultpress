@@ -537,12 +537,12 @@ Helpers
 #no-access-credentials {
 	position: relative;
 	clear: both;
-	margin: 0 20px 20px 0;
-	padding: 0 25px 0 68px;
-	border-radius: 4px;
+	margin-bottom: 16px;
+	padding: 0 24px 0 68px;
 	background: #FBFBDF;
 	-webkit-background-clip: padding-box;
 	overflow: hidden;
+	box-shadow: 0 0 0 1px rgba(213, 213, 213, 0.5), 0 1px 2px #eee;
 }
 
 #no-access-credentials:before {
@@ -627,19 +627,16 @@ Status Ticker
 #vp-ticker {
 	position: relative; /* WAT */
 	top: 0;
-	margin: 0 20px 20px 0;
-	padding: 9px 13px;
-	border-radius: 4px;
-	background: #333;
-	color: #ddd;
+	margin-bottom: 16px;
+	padding: 24px;
+	background: #fff;
+	box-shadow: 0 0 0 1px rgba(213, 213, 213, 0.5), 0 1px 2px #eee;
 }
 
 #vp-ticker h3 {
 	display: inline;
 	margin: 0;
 	padding: 0 5px 0 0;
-	border-radius: 4px;
-	color: #ddd;
 	font-size: 13px;
 	font-weight: 700;
 	line-height: 1;
@@ -798,10 +795,6 @@ Tabs
 Progress Bars
 ========================================================================== */
 
-#vp_progress {
-	padding-right: 20px;
-}
-
 #vp_progress:after {
 	/* clearfix */
 	content: ".";
@@ -812,12 +805,12 @@ Progress Bars
 }
 
 .vp_graphs {
-	background: #333;
-	color: #FFF;
+	color: #000;
+	background: #fff;
 	float: left;
 	width: 380px;
-	padding: 0;
-	border-radius: 6px;
+	padding: 24px;
+	box-shadow: 0 0 0 1px rgba(213, 213, 213, 0.5), 0 1px 2px #eee;
 }
 
 @media (max-width: 767px) {
@@ -838,12 +831,9 @@ Progress Bars
 }
 
 .vp_graphs h1 {
-	color: #FFF;
-	text-shadow: 0 -1px 0 rgba(0,0,0,0.4);
-	padding: 20px 30px 20px 30px;
 	margin: 0;
 	border-bottom: 1px solid rgba(255,255,255,0.05);
-	font-size: 24px;
+	font-size: 16px;
 	font-weight: 400;
 	line-height: 1.4;
 }
@@ -856,21 +846,21 @@ Progress Bars
 
 
 .vp_graphs ul {
-	padding: 0 0 5px 0;
-	float: left;
 	width: 100%;
-	background: rgba(0,0,0,0.1);
 }
 
 .vp_graphs li {
 	float: left;
 	clear: both;
 	margin: 0;
-	padding: 15px 30px;
+	padding: 15px 0;
 	width: 100%;
-	line-height: 100%;
-	border-top: 1px solid rgba(0,0,0,0.3);
-	border-bottom: 1px solid rgba(255,255,255,0.05);
+	line-height: 50%;
+	border-bottom: 1px solid rgba(0,0,0,0.3);
+}
+
+.vp_graphs li:last-child {
+	border-bottom: none;
 }
 
 .vp_graphs .completed .bar span {
@@ -879,11 +869,6 @@ Progress Bars
 	background: -webkit-linear-gradient(top, rgba(41,154,11,1) 0%,rgba(41,154,11,1) 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#299a0b', endColorstr='#299a0b',GradientType=0 );
 	background: linear-gradient(top, rgba(41,154,11,1) 0%,rgba(41,154,11,1) 100%);
-}
-
-#vp_progress .completed .percentage,
-#vp_progress .completed .title {
-	color: #fff;
 }
 
 #vp_progress .bar {
@@ -933,7 +918,6 @@ Progress Bars
 	text-align: right;
 	font-size: 11px;
 	font-weight: bold;
-	color: #999;
 }
 
 #vp_progress .title {
@@ -942,14 +926,13 @@ Progress Bars
 	position: relative;
 	top: 10px;
 	font-size: 12px;
-	color: #CCC;
 }
 
 .vp_progress-description {
 	margin: 0 0 0 400px;
-	padding: 30px;
-	border-radius: 5px;
+	padding: 24px;
 	background: #fff;
+	box-shadow: 0 0 0 1px rgba(213, 213, 213, 0.5), 0 1px 2px #eee;
 }
 
 @media (max-width: 767px) {
@@ -960,20 +943,16 @@ Progress Bars
 
 .vp_progress-description h3 {
 	margin-top: 0;
-	font-size: 12px;
-	color: #aaa;
+	font-size: 16px;
 }
 
 .vp_progress-description ul {
-	margin: 0 0 20px 0;
+	margin: 0 0 16px 16px;
 }
 
 .vp_progress-description li {
 	list-style: square;
-	color: #777;
 	margin: 0 0 15px 0;
-	font-size: 12px;
-	line-height: 160%;
 }
 
 .vp_progress-description strong {
@@ -981,11 +960,8 @@ Progress Bars
 }
 
 .vp_progress-description p {
-	font-size: 12px;
-	color: #999;
 	font-style: italic;
-	line-height: 160%;
-	margin: 0 0 30px 0;
+	margin: 0 0 24px 0;
 }
 
 .vp_progress-description p:last-child {
