@@ -1,3 +1,5 @@
+# The files and directories in the list below are excluded from the files we release to WordPress.org's SVN.
+# This file is only used by our release script, in bin/release.php.
 .codeclimate.yml
 .editorconfig
 .eslines.json
