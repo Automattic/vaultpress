@@ -1,7 +1,7 @@
 <?php
 /**
  * Main VaultPress class.
- * 
+ *
  * @package VaultPress
  */
 
@@ -572,7 +572,7 @@ class VaultPress {
 					<img src="<?php echo esc_url( plugins_url( 'images/security.svg', __FILE__ ) ); ?>" alt="VaultPress">
 					<h2><?php _e( 'The VaultPress plugin requires a subscription.', 'vaultpress' ); ?></h2>
 					<p><?php _e( 'Get realtime backups, automated security scanning, and support from WordPress&nbsp;experts.', 'vaultpress' ); ?></p>
-					<a class="dops-button is-primary" href="https://vaultpress.com/plugin/?utm_source=plugin-unregistered&amp;utm_medium=view-plans-and-pricing&amp;utm_campaign=1.0-plugin"><?php _e( 'View plans and pricing', 'vaultpress' ); ?></a>
+					<a class="dops-button is-primary" href="https://vaultpress.com/plugin/?utm_source=plugin-unregistered&amp;utm_medium=view-plans-and-pricing&amp;utm_campaign=1.0-plugin" target="_blank" rel="noopener noreferrer"><?php _e( 'View plans and pricing', 'vaultpress' ); ?></a>
 				</div>
 			</div>
 
@@ -590,11 +590,15 @@ class VaultPress {
 						<?php esc_html_e( 'Registration key', 'vaultpress' ) ?>
 					</div>
 					<div class="dops-card">
-						<p><?php _e( 'Paste your registration key&nbsp;below:', 'vaultpress' ); ?></p>
 						<form method="post" action="">
 							<fieldset>
-								<textarea class="dops-textarea" placeholder="<?php echo esc_attr( __( 'Enter your key here...', 'vaultpress' ) ); ?>" name="registration_key"></textarea>
-								<button class="dops-button"><?php _e( 'Register ', 'vaultpress' ); ?></button>
+								<p>
+									<?php esc_html_e( 'Paste your registration key&nbsp;below:', 'vaultpress' ); ?>
+								</p>
+								<p>
+									<textarea class="dops-textarea" placeholder="<?php esc_attr_e( __( 'Enter your key here...', 'vaultpress' ) ); ?>" name="registration_key"></textarea>
+								</p>
+								<button class="dops-button is-compact"><?php _e( 'Register ', 'vaultpress' ); ?></button>
 								<input type="hidden" name="action" value="register" />
 								<?php wp_nonce_field( 'vaultpress_register' ); ?>
 							</fieldset>
@@ -785,7 +789,7 @@ class VaultPress {
 					onsubmit="return confirm( '<?php esc_html_e( 'Do you really want to reset all options?', 'vaultpress' ) ?>' );"
 					method="post"
 					action="">
-					<button class="dops-button is-scary"><?php _e( 'Delete all VaultPress settings', 'vaultpress' ); ?></button>
+					<button class="dops-button is-scary is-compact"><?php esc_html_e( 'Delete all settings', 'vaultpress' ); ?></button>
 					<input type="hidden" name="action" value="delete-vp-settings"/>
 					<?php wp_nonce_field( 'delete_vp_settings' ); ?>
 				</form>
