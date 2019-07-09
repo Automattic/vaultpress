@@ -73,16 +73,20 @@ if ( ! function_exists( __NAMESPACE__ . '\autoloader' ) ) {
 
 		if ( isset( $jetpack_packages_classes[ $class_name ] ) ) {
 			if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
-				// TODO ideally we shouldn't skip any of these, see: https://github.com/Automattic/jetpack/pull/12646
+				// TODO ideally we shouldn't skip any of these, see: https://github.com/Automattic/jetpack/pull/12646.
 				$ignore = in_array(
 					$class_name,
 					array(
 						'Automattic\Jetpack\JITM',
 						'Automattic\Jetpack\Connection\Manager',
 						'Automattic\Jetpack\Connection\Manager_Interface',
+						'Automattic\Jetpack\Connection\XMLRPC_Connector',
 						'Jetpack_Options',
-						'Jetpack_Sync_Main',
+						'Jetpack_Signature',
+						'Automattic\Jetpack\Sync\Main',
 						'Automattic\Jetpack\Constants',
+						'Automattic\Jetpack\Tracking',
+						'Automattic\Jetpack\Plugin\Tracking',
 					),
 					true
 				);
@@ -116,15 +120,10 @@ if ( ! function_exists( __NAMESPACE__ . '\autoloader' ) ) {
 /**
  * Prepare all the classes for autoloading.
  */
-function enqueue_packages_24bbefe8c617283b9adb72d9b1db3f08() {
+function enqueue_packages_5839d95eac7dcb16939cc92ebcc4d8cf() {
 	$class_map = require_once dirname( __FILE__ ) . '/composer/autoload_classmap_package.php';
 	foreach ( $class_map as $class_name => $class_info ) {
 		enqueue_package_class( $class_name, $class_info['version'], $class_info['path'] );
 	}
-	$legacy_class_map = require_once dirname( __FILE__ ) . '/composer/autoload_classmap.php';
-	foreach ( $legacy_class_map as $class_name => $class_path ) {
-		enqueue_package_class( $class_name, '0.1', $class_path );
-	}
 }
-enqueue_packages_24bbefe8c617283b9adb72d9b1db3f08();
-		
+enqueue_packages_5839d95eac7dcb16939cc92ebcc4d8cf();
