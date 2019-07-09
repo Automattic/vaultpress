@@ -6,7 +6,10 @@
  */
 
 use Automattic\Jetpack\Assets\Logo;
-
+use Automattic\Jetpack\Connection\Manager as Connection;
+use Automattic\Jetpack\Connection\Client;
+use Automattic\Jetpack\Tracking;
+ 
 /**
  * Main VaultPress class.
  */
@@ -566,6 +569,7 @@ class VaultPress {
 	}
 
 	function ui_register() {
+		$connection = new Connection();
 		?>
 			<div class="vp-notice__wide">
 				<div class="dops-card">
@@ -583,7 +587,22 @@ class VaultPress {
 					</h2>
 				</div>
 			</div>
-
+			<?php
+			if ( ! $connection->is_active() ) {
+			?>
+				<div class="vp-row">
+					<div class="vp-col">
+						<div class="dops-card dops-section-header is-compact">
+							<?php esc_html_e( 'Connection', 'vaultpress' ) ?>
+						</div>
+						<div class="dops-card">
+							<a class="dops-button primary" href="<?php echo $connection->build_connect_url()?>">Connect</a>
+						</div>
+					</div>
+				</div>
+			<?php
+			}
+			?>
 			<div class="vp-row">
 				<div class="vp-col">
 					<div class="dops-card dops-section-header is-compact">

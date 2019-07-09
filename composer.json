@@ -8,12 +8,21 @@
 		"issues": "https://github.com/Automattic/vaultpress/issues"
 	},
 	"require": {
-		"automattic/jetpack-logo": "1.1.0"
+		"automattic/jetpack-logo": "1.1.0",
+		"automattic/jetpack-connection": "@dev",
+		"automattic/jetpack-constants": "@dev",
+		"automattic/jetpack-options": "@dev"
 	},
 	"require-dev": {
 		"automattic/jetpack-standards": "master-dev",
 		"automattic/jetpack-autoloader": "1.2.0"
 	},
+	"repositories": [
+                {
+                        "type": "path",
+                        "url": "../jetpack/packages/*"
+                }
+        ],
 	"scripts": {
 		"php:compatibility": "composer install && vendor/bin/phpcs -p -s -n --runtime-set testVersion '5.3-' --standard=PHPCompatibilityWP --ignore=docker,tools,tests,node_modules,vendor --extensions=php",
 		"php:lint": "composer install && vendor/bin/phpcs -p -s",

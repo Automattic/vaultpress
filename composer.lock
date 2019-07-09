@@ -4,8 +4,72 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "707c62d71e6006cd449ddc4718bcf25d",
+    "content-hash": "eb84f41b5ce20916d4a27c482ff30f21",
     "packages": [
+        {
+            "name": "automattic/jetpack-connection",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "../jetpack/packages/connection",
+                "reference": "0a0e293d73c17d59376590d56e5667b169d26877"
+            },
+            "require": {
+                "automattic/jetpack-constants": "@dev",
+                "automattic/jetpack-options": "@dev"
+            },
+            "require-dev": {
+                "php-mock/php-mock": "^2.1",
+                "phpunit/phpunit": "^5.7 || ^6.5 || ^7.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Automattic\\Jetpack\\Connection\\": "src"
+                },
+                "classmap": [
+                    "legacy"
+                ]
+            },
+            "scripts": {
+                "phpunit": [
+                    "@composer install",
+                    "./vendor/phpunit/phpunit/phpunit --colors=always"
+                ]
+            },
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "description": "Everything needed to connect to the Jetpack infrastructure"
+        },
+        {
+            "name": "automattic/jetpack-constants",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "../jetpack/packages/constants",
+                "reference": "a6ab6360f4b48962ec7d62b06b39d1470b1dbe95"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.7 || ^6.5 || ^7.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Automattic\\Jetpack\\": "src/"
+                }
+            },
+            "scripts": {
+                "phpunit": [
+                    "@composer install",
+                    "./vendor/phpunit/phpunit/phpunit --colors=always"
+                ]
+            },
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "description": "A wrapper for defining constants in a more testable way."
+        },
         {
             "name": "automattic/jetpack-logo",
             "version": "v1.1.0",
@@ -36,6 +100,32 @@
             ],
             "description": "A logo for Jetpack",
             "time": "2019-06-10T21:57:07+00:00"
+        },
+        {
+            "name": "automattic/jetpack-options",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "../jetpack/packages/options",
+                "reference": "78220bf7d3c1a3a5ed4edb77462e84982b3c408f"
+            },
+            "require": {
+                "automattic/jetpack-constants": "@dev"
+            },
+            "require-dev": {
+                "10up/wp_mock": "0.4.2",
+                "phpunit/phpunit": "7.*.*"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "legacy"
+                ]
+            },
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "description": "A wrapper for wp-options to manage specific Jetpack options."
         }
     ],
     "packages-dev": [
@@ -180,16 +270,16 @@
         },
         {
             "name": "phpcompatibility/php-compatibility",
-            "version": "9.1.1",
+            "version": "9.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPCompatibility/PHPCompatibility.git",
-                "reference": "2b63c5d284ab8857f7b1d5c240ddb507a6b2293c"
+                "reference": "3db1bf1e28123fd574a4ae2e9a84072826d51b5e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPCompatibility/PHPCompatibility/zipball/2b63c5d284ab8857f7b1d5c240ddb507a6b2293c",
-                "reference": "2b63c5d284ab8857f7b1d5c240ddb507a6b2293c",
+                "url": "https://api.github.com/repos/PHPCompatibility/PHPCompatibility/zipball/3db1bf1e28123fd574a4ae2e9a84072826d51b5e",
+                "reference": "3db1bf1e28123fd574a4ae2e9a84072826d51b5e",
                 "shasum": ""
             },
             "require": {
@@ -203,7 +293,7 @@
                 "phpunit/phpunit": "~4.5 || ^5.0 || ^6.0 || ^7.0"
             },
             "suggest": {
-                "dealerdirect/phpcodesniffer-composer-installer": "^0.4.3 || This Composer plugin will sort out the PHPCS 'installed_paths' automatically.",
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.5 || This Composer plugin will sort out the PHPCS 'installed_paths' automatically.",
                 "roave/security-advisories": "dev-master || Helps prevent installing dependencies with known security issues."
             },
             "type": "phpcodesniffer-standard",
@@ -234,7 +324,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2018-12-30T23:16:27+00:00"
+            "time": "2019-06-27T19:58:56+00:00"
         },
         {
             "name": "phpcompatibility/phpcompatibility-paragonie",
@@ -483,6 +573,9 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "automattic/jetpack-connection": 20,
+        "automattic/jetpack-constants": 20,
+        "automattic/jetpack-options": 20,
         "automattic/jetpack-standards": 20
     },
     "prefer-stable": false,
