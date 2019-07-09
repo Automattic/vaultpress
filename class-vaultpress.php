@@ -248,7 +248,7 @@ class VaultPress {
 		 * In the VaultPress dashboard when Jetpack is installed, move the notices.
 		 */
 		$screen = get_current_screen();
-		if ( ! is_null( $screen ) && 'jetpack_page_vaultpress' === $screen->id ) {
+		if ( ! is_null( $screen ) && in_array( $screen->id, array( 'jetpack_page_vaultpress', 'toplevel_page_vaultpress' ), true ) ) {
 			$notice_hooks[] = 'vaultpress_notices';
 		} else {
 			$notice_hooks[] = 'admin_notices';
@@ -745,13 +745,15 @@ class VaultPress {
 			}
 		}
 
+		$classes = in_array( get_current_screen()->parent_base, array( 'jetpack', 'vaultpress' ), true )
+			? ''
+			: "notice notice-$type";
+
 		$this->render_notice(
 			"<strong>$heading</strong><br/>$message",
 			$level,
 			array(),
-			'jetpack' !== get_current_screen()->parent_base
-				? "notice notice-$type"
-				: ''
+			$classes
 		);
 	}
 
