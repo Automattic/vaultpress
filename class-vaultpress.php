@@ -245,7 +245,7 @@ class VaultPress {
 		$notice_hooks = array( 'user_admin_notices' );
 
 		/*
-		 * In the VaultPress dashboard when Jetpack is installed, move the notices.
+		 * In the VaultPress dashboard, move the notices.
 		 */
 		$screen = get_current_screen();
 		if (
