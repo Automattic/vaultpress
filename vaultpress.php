@@ -486,13 +486,17 @@ class VaultPress {
 		return $this->_server_url;
 	}
 
-	// show message if plugin is activated but not connected to VaultPress
+	/**
+	 * Show message if plugin is activated but not connected to VaultPress
+	 */
 	function connect_notice() {
-		if ( isset( $_GET['page'] ) && 'vaultpress' == $_GET['page'] )
+		if ( isset( $_GET['page'] ) && 'vaultpress' == $_GET['page'] ) {
 			return;
+		}
 
 		$message = sprintf(
-			__( 'You must enter your registration key before VaultPress can back up and secure your site. <a href="%1$s">Register&nbsp;VaultPress</a>', 'vaultpress' ),
+			/* translators: URLs to VaultPress' dashboard page. */
+			__( 'To back up and secure your site, enter your registration key. <a href="%1$s">Register VaultPress or purchase a plan.</a>', 'vaultpress' ),
 			admin_url( 'admin.php?page=vaultpress' )
 		);
 		$this->ui_message( $message, 'notice', __( 'VaultPress needs your attention!', 'vaultpress' ) );
