@@ -3,7 +3,7 @@ Contributors: automattic, apokalyptik, briancolinger, josephscott, shaunandrews,
 Tags: security, malware, virus, archive, back up, back ups, backup, backups, scanning, restore, wordpress backup, site backup, website backup
 Requires at least: 3.2
 Tested up to: 5.1.1
-Stable tag: 1.9.10
+Stable tag: 2.0
 Requires PHP: 5.3
 License: GPLv2
 
@@ -48,6 +48,14 @@ A VaultPress subscription is for a single WordPress site. You can purchase addit
 Yes, VaultPress supports Multisite installs. Each site will require its own subscription.
 
 == Changelog ==
+
+= 2.0.1 =
+
+* Release date: July 12, 2019
+
+**Bug Fixes**
+
+* Security Scanner: ensure the Security Scanner can be triggered at all times.
 
 = 2.0 =
 
