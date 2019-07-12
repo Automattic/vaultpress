@@ -946,8 +946,12 @@ class VaultPress {
 	 * Render the Jetpack logo
 	 */
 	function ui_logo() {
-		$logo = new Logo();
-		return $logo->render();
+		if ( ! class_exists( 'Jetpack_Logo' ) ) {
+			require_once VAULTPRESS__PLUGIN_DIR . 'class-jetpack-logo.php';
+			$jetpack_logo = new Jetpack_Logo();
+		}
+
+		return $jetpack_logo->output();
 	}
 
 	function get_config( $key ) {
