@@ -2,6 +2,14 @@
 
 **This is a list detailing changes for all the past Jetpack releases. For more information about the current release, see [the readme](https://github.com/Automattic/vaultpress/blob/master/readme.txt).**
 
+= 2.0.1 =
+
+* Release date: July 12, 2019
+
+**Bug Fixes**
+
+* Security Scanner: ensure the Security Scanner can be triggered at all times.
+
 = 2.0 =
 
 * Release date: July 9, 2019
