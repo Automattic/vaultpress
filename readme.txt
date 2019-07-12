@@ -49,6 +49,14 @@ Yes, VaultPress supports Multisite installs. Each site will require its own subs
 
 == Changelog ==
 
+= 2.0.1 =
+
+* Release date: July 12, 2019
+
+**Bug Fixes**
+
+* Security Scanner: ensure the Security Scanner can be triggered at all times.
+
 = 2.0 =
 
 * Release date: July 9, 2019
