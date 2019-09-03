@@ -2901,7 +2901,6 @@ JS;
 		if ( !class_exists('Jetpack') )
 			return false;
 
-		Jetpack::load_xml_rpc_client();
 		$xml = new Jetpack_IXR_Client( array( 'user_id' => get_current_user_id() ) );
 		$xml->query( 'wpcom.getUserEmail' );
 		if ( ! $xml->isError() ) {
@@ -2915,7 +2914,6 @@ JS;
 		if ( !class_exists('Jetpack') )
 			return false;
 
-		Jetpack::load_xml_rpc_client();
 		$xml = new Jetpack_IXR_Client( array( 'user_id' => Jetpack_Options::get_option( 'master_user' ) ) );
 		$xml->query( 'vaultpress.registerSite', $already_purchased );
 		if ( ! $xml->isError() ) {
