@@ -2898,9 +2898,15 @@ JS;
 	}
 
 	function get_jetpack_email() {
-		if ( !class_exists('Jetpack') )
+		if ( ! class_exists( 'Jetpack' ) ) {
 			return false;
-
+		}
+		
+		// For version of Jetpack prior to 7.7.
+		if ( ! class_exists( 'Jetpack_IXR_Client' ) ) {
+			Jetpack::load_xml_rpc_client();
+		}
+		
 		$xml = new Jetpack_IXR_Client( array( 'user_id' => get_current_user_id() ) );
 		$xml->query( 'wpcom.getUserEmail' );
 		if ( ! $xml->isError() ) {
@@ -2911,8 +2917,14 @@ JS;
 	}
 
 	function get_key_via_jetpack( $already_purchased = false ) {
-		if ( !class_exists('Jetpack') )
+		if ( ! class_exists( 'Jetpack' ) ) {
 			return false;
+		}
+		
+		// For version of Jetpack prior to 7.7.
+		if ( ! class_exists( 'Jetpack_IXR_Client' ) ) {
+			Jetpack::load_xml_rpc_client();
+		}
 
 		$xml = new Jetpack_IXR_Client( array( 'user_id' => Jetpack_Options::get_option( 'master_user' ) ) );
 		$xml->query( 'vaultpress.registerSite', $already_purchased );
