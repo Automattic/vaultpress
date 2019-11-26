@@ -3,7 +3,7 @@
  * Plugin Name: VaultPress
  * Plugin URI: http://vaultpress.com/?utm_source=plugin-uri&amp;utm_medium=plugin-description&amp;utm_campaign=1.0
  * Description: Protect your content, themes, plugins, and settings with <strong>realtime backup</strong> and <strong>automated security scanning</strong> from <a href="http://vaultpress.com/?utm_source=wp-admin&amp;utm_medium=plugin-description&amp;utm_campaign=1.0" rel="nofollow">VaultPress</a>. Activate, enter your registration key, and never worry again. <a href="http://vaultpress.com/help/?utm_source=wp-admin&amp;utm_medium=plugin-description&amp;utm_campaign=1.0" rel="nofollow">Need some help?</a>
- * Version: 2.0-beta
+ * Version: 2.1-alpha
  * Author: Automattic
  * Author URI: http://vaultpress.com/?utm_source=author-uri&amp;utm_medium=plugin-description&amp;utm_campaign=1.0
  * License: GPL2+
@@ -17,7 +17,7 @@
 defined( 'ABSPATH' ) || die();
 
 define( 'VAULTPRESS__MINIMUM_PHP_VERSION', '5.3.2' );
-define( 'VAULTPRESS__VERSION', '2.0-beta' );
+define( 'VAULTPRESS__VERSION', '2.1-alpha' );
 define( 'VAULTPRESS__PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 
 /**
@@ -502,7 +502,7 @@ class VaultPress {
 		$this->ui_message( $message, 'notice', __( 'VaultPress needs your attention!', 'vaultpress' ) );
 	}
 
-	// show message after activation
+  // show message after activation
 	function activated_notice() {
 		if ( 'network' == $this->get_option( 'activated' ) ) {
 			$message = sprintf(
@@ -520,16 +520,53 @@ class VaultPress {
 		$this->delete_option( 'activated' );
 	}
 
-	function error_notice() {
+	/**
+	 * Display an error notice when something is wrong with our VaultPress installation.
+	 */
+	public function error_notice() {
 		$error_message = $this->get_option( 'connection_error_message' );
 
-		// link to the VaultPress page if we're not already there
-		if ( !isset( $_GET['page'] ) || 'vaultpress' != $_GET['page'] ) {
-			$error_message .= ' ' . sprintf( '<a href="%s">%s</a>', admin_url( 'admin.php?page=vaultpress' ), __( 'Visit&nbsp;the&nbsp;VaultPress&nbsp;page' , 'vaultpress') );
+		// link to the VaultPress page if we're not already there.
+		if (
+			! isset( $_GET['page'] )
+			|| 'vaultpress' != $_GET['page']
+		) {
+			$error_message .= sprintf(
+				' <a href="%s">%s</a>',
+				admin_url( 'admin.php?page=vaultpress' ),
+				esc_html__( 'Visit the VaultPress page', 'vaultpress' )
+			);
 		}
 
 		$screen = get_current_screen();
-		if ( !in_array( $screen->id, array( 'about', 'about-user', 'about-network' ) ) && !empty( $error_message ) ) {
+
+		/*
+		 * Do not display any error message if we don't have a message,
+		 * or have no info about the page.
+		 */
+		if ( is_null( $screen ) || empty( $error_message ) ) {
+			return;
+		}
+
+		/*
+		 * Only display errors on specific pages:
+		 * - the main dashboard.
+		 * - the VaultPress and Jetpack dashboards.
+		 * - the plugins screen.
+		 */
+		if (
+			in_array(
+				$screen->id,
+				array(
+					'dashboard',
+					'toplevel_page_jetpack',
+					'jetpack_page_vaultpress',
+					'toplevel_page_vaultpress',
+					'plugins',
+				),
+				true
+			)
+		) {
 			$this->ui_message( $error_message, 'error' );
 		}
 	}
@@ -574,7 +611,10 @@ class VaultPress {
 		if ( $this->is_localhost() ) {
 			$this->update_option( 'connection', time() );
 			$this->update_option( 'connection_error_code', 'error_localhost' );
-			$this->update_option( 'connection_error_message', 'Hostnames such as localhost or 127.0.0.1 can not be reached by vaultpress.com and will not work with the service. Sites must be publicly accessible in order to work with VaultPress.' );
+			$this->update_option(
+				'connection_error_message',
+				esc_html__( 'Hostnames such as localhost or 127.0.0.1 can not be reached by vaultpress.com and will not work with the service. Sites must be publicly accessible in order to work with VaultPress.', 'vaultpress' )
+			);
 			$this->error_notice();
 			return array( 'ui' => ob_get_clean(), 'dashboard_link' => false );
 		}
@@ -586,7 +626,7 @@ class VaultPress {
 
 		if ( ! $this->is_registered() ) {
 			$this->ui_register();
-			return array( 'ui' => ob_get_clean(), 'dashboard_link' => true );
+			return array( 'ui' => ob_get_clean(), 'dashboard_link' => false );
 		}
 
 		$status = $this->contact_service( 'status' );
@@ -718,7 +758,7 @@ class VaultPress {
 					<img src="<?php echo esc_url( plugins_url( 'images/security.svg', __FILE__ ) ); ?>" alt="VaultPress">
 					<h2><?php _e( 'The VaultPress plugin requires a subscription.', 'vaultpress' ); ?></h2>
 					<p><?php _e( 'Get realtime backups, automated security scanning, and support from WordPress&nbsp;experts.', 'vaultpress' ); ?></p>
-					<a class="dops-button is-primary" href="https://vaultpress.com/plugin/?utm_source=plugin-unregistered&amp;utm_medium=view-plans-and-pricing&amp;utm_campaign=1.0-plugin" target="_blank" rel="noopener noreferrer"><?php _e( 'View plans and pricing', 'vaultpress' ); ?></a>
+					<a class="dops-button is-primary" href="https://vaultpress.com/plans/?utm_source=plugin-unregistered&amp;utm_medium=view-plans-and-pricing&amp;utm_campaign=1.0-plugin" target="_blank" rel="noopener noreferrer"><?php _e( 'View plans and pricing', 'vaultpress' ); ?></a>
 				</div>
 			</div>
 
@@ -919,20 +959,37 @@ class VaultPress {
 	function ui_delete_vp_settings_button() {
 		?>
 		<div class="dops-card dops-section-header is-compact">
-			<?php _e( 'Settings reset', 'vaultpress' ); ?>
+			<?php _e( 'Reset settings', 'vaultpress' ); ?>
 		</div>
 		<?php
 		if ( isset( $_GET['delete-vp-settings'] ) && 1 == (int) $_GET['delete-vp-settings'] ) {
 			?>
 			<div class="dops-card">
-                <p><?php _e( 'All VaultPress settings have been deleted.', 'vaultpress' ); ?></p>
+				<p><?php esc_html_e( 'All VaultPress settings have been deleted.', 'vaultpress' ); ?></p>
 			</div>
 			<?php
 		} else {
 			?>
 			<div class="dops-card">
-				<p><?php _e( 'Click this button to reset all VaultPress options in the database.', 'vaultpress' ); ?></p>
-				<p><strong><?php esc_html_e( 'Warning: this process is irreversible.', 'vaultpress' ) ?></strong></p>
+				<p><?php esc_html_e( 'Click this button to reset all VaultPress options in the database. You can try this if VaultPress is reporting a connection error.', 'vaultpress' ); ?></p>
+				<p><strong>
+				<?php
+				printf(
+					wp_kses(
+						/* translators: URLs to VaultPress dashboard. */
+						__( 'Warning: this button will unregister VaultPress and disconnect it from your site. If you intend on registering the plugin again, you can find your registration key <a href="%1$s" target="_blank" rel="noopener noreferrer">here</a>.', 'vaultpress' ),
+						array(
+							'a' => array(
+								'href'   => array(),
+								'target' => array(),
+								'rel'    => array(),
+							),
+						)
+					),
+					'https://dashboard.vaultpress.com/account/'
+				);
+				?>
+				</strong></p>
 				<form
 					onsubmit="return confirm( '<?php esc_html_e( 'Do you really want to reset all options?', 'vaultpress' ) ?>' );"
 					method="post"
@@ -2902,10 +2959,15 @@ JS;
 	}
 
 	function get_jetpack_email() {
-		if ( !class_exists('Jetpack') )
+		if ( ! class_exists( 'Jetpack' ) ) {
 			return false;
-
-		Jetpack::load_xml_rpc_client();
+		}
+		
+		// For version of Jetpack prior to 7.7.
+		if ( ! class_exists( 'Jetpack_IXR_Client' ) ) {
+			Jetpack::load_xml_rpc_client();
+		}
+		
 		$xml = new Jetpack_IXR_Client( array( 'user_id' => get_current_user_id() ) );
 		$xml->query( 'wpcom.getUserEmail' );
 		if ( ! $xml->isError() ) {
@@ -2916,10 +2978,15 @@ JS;
 	}
 
 	function get_key_via_jetpack( $already_purchased = false ) {
-		if ( !class_exists('Jetpack') )
+		if ( ! class_exists( 'Jetpack' ) ) {
 			return false;
+		}
+		
+		// For version of Jetpack prior to 7.7.
+		if ( ! class_exists( 'Jetpack_IXR_Client' ) ) {
+			Jetpack::load_xml_rpc_client();
+		}
 
-		Jetpack::load_xml_rpc_client();
 		$xml = new Jetpack_IXR_Client( array( 'user_id' => Jetpack_Options::get_option( 'master_user' ) ) );
 		$xml->query( 'vaultpress.registerSite', $already_purchased );
 		if ( ! $xml->isError() ) {
