@@ -933,7 +933,7 @@ class VaultPress {
 				printf(
 					wp_kses(
 						/* translators: URLs to VaultPress dashboard. */
-						__( 'Warning: this button will unregister VaultPress. If you intend on registering the plugin again, you can find your registration key <a href="%1$s" target="_blank" rel="noopener noreferrer">here</a>.', 'vaultpress' ),
+						__( 'Warning: this button will unregister VaultPress and disconnect it from your site. If you intend on registering the plugin again, you can find your registration key <a href="%1$s" target="_blank" rel="noopener noreferrer">here</a>.', 'vaultpress' ),
 						array(
 							'a' => array(
 								'href'   => array(),
