@@ -57,6 +57,7 @@ Yes, VaultPress supports Multisite installs. Each site will require its own subs
 
 * General: avoid PHP deprecation notices when using a newer version of the Jetpack plugin.
 * Admin Page: do not display a dashboard link if not registered.
+* Admin Page: update reset settings card wording.
 * Connect button: update link to current VaultPress page.
 * Notices: only display notices in specific locations.
 
