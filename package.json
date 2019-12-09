@@ -20,7 +20,8 @@
 		"distclean": "rm -rf node_modules && yarn clean",
 		"build": "yarn install-if-deps-outdated && yarn clean && yarn build-php",
 		"build-php": "composer install",
-		"build-production": "yarn distclean && yarn && yarn build",
+	  	"build-php-production": "composer install --no-dev",
+		"build-production": "yarn distclean && yarn && yarn install-if-deps-outdated && yarn clean && yarn build-php-production",
 		"php:compatibility": "composer php:compatibility",
 		"php:lint": "composer php:lint",
 		"php:autofix": "composer php:autofix"
