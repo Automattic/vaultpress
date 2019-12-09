@@ -13,6 +13,7 @@ matrix:
   include:
     - php: 5.3
       dist: precise
+      script: yarn build-php-production
     - php: 5.6
     - php: 7.0
     - php: 7.2
@@ -29,7 +30,7 @@ before_install:
 
 install:
   - nvm install
-  - npm i -g yarn && yarn && yarn build-php-production
+  - npm i -g yarn && yarn && yarn build-php
 
 notifications:
   email: false
