@@ -17,6 +17,7 @@ matrix:
     - php: 7.0
     - php: 7.2
     - php: 7.3
+      script: yarn php:compatibility **/*.php
 
 # Git clone depth
 # By default Travis CI clones repositories to a depth of 50 commits
@@ -29,9 +30,6 @@ before_install:
 install:
   - nvm install
   - npm i -g yarn && yarn && yarn build-php
-
-script:
-  - yarn php:compatibility **/*.php
 
 notifications:
   email: false
