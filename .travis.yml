@@ -29,7 +29,7 @@ before_install:
 
 install:
   - nvm install
-  - npm i -g yarn && yarn && yarn build-php
+  - npm i -g yarn && yarn && yarn build-php-production
 
 notifications:
   email: false
