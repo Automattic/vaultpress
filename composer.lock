@@ -4,11 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "61a43e16696d19053becc6610c345fb6",
+    "content-hash": "2d0338faaf2d588d133094c193841727",
     "packages": [
         {
             "name": "automattic/jetpack-autoloader",
-            "version": "v1.3.6",
+            "version": "v1.3.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Automattic/jetpack-autoloader.git",
