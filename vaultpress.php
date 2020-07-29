@@ -533,7 +533,7 @@ class VaultPress {
 		}
 	}
 
-  // show message after activation
+	// show message after activation
 	function activated_notice() {
 		if ( 'network' == $this->get_option( 'activated' ) ) {
 			$message = sprintf(
@@ -1955,7 +1955,7 @@ JS;
 					$loadavg = null;
 
 				require_once ABSPATH . '/wp-admin/includes/plugin.php';
-                                if ( function_exists( 'get_plugin_data' ) )
+																if ( function_exists( 'get_plugin_data' ) )
 					$vaultpress_response_info                  = get_plugin_data( __FILE__ );
 				else
 					$vaultpress_response_info		   = array( 'Version' => $this->plugin_version );
@@ -2995,7 +2995,7 @@ JS;
 		}
 
 		// For version of Jetpack prior to 7.7.
-		if ( ! class_exists( 'Jetpack_IXR_Client' ) ) {
+		if ( defined( 'JETPACK__VERSION' ) && version_compare( JETPACK__VERSION, '7.7', '<' )  ) {
 			Jetpack::load_xml_rpc_client();
 		}
 
@@ -3014,7 +3014,7 @@ JS;
 		}
 
 		// For version of Jetpack prior to 7.7.
-		if ( ! class_exists( 'Jetpack_IXR_Client' ) ) {
+		if ( defined( 'JETPACK__VERSION' ) && version_compare( JETPACK__VERSION, '7.7', '<' )  ) {
 			Jetpack::load_xml_rpc_client();
 		}
 
