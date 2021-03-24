@@ -3046,12 +3046,9 @@ $vaultpress = VaultPress::init();
 
 if ( isset( $_GET['vaultpress'] ) && $_GET['vaultpress'] ) {
 	if ( !function_exists( 'wp_magic_quotes' ) ) {
-		// If already slashed, strip.
-		if ( get_magic_quotes_gpc() ) {
-			$_GET    = stripslashes_deep( $_GET    );
-			$_POST   = stripslashes_deep( $_POST   );
-			$_COOKIE = stripslashes_deep( $_COOKIE );
-		}
+        $_GET    = stripslashes_deep( $_GET    );
+        $_POST   = stripslashes_deep( $_POST   );
+        $_COOKIE = stripslashes_deep( $_COOKIE );
 
 		// Escape with wpdb.
 		$_GET    = add_magic_quotes( $_GET    );
