@@ -1,9 +1,9 @@
 name: Repo gardening
 
 on:
-  # Listen to this event for PRs from forks (see Flag OSS task).
+  # Listen to this event for PRs from forks (see Flag OSS and Notify tasks).
   pull_request_target:
-    types: [opened]
+    types: [opened, labeled]
   # We need to listen to all these events to catch all scenarios
   pull_request:
     types: ['opened', 'synchronize', 'edited', 'closed', 'labeled']
