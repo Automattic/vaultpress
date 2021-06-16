@@ -10,7 +10,6 @@
 .nvmrc
 .phpcs.xml.dist
 .prettierrc
-.travis.yml
 renovate.json
 bin
 node_modules
@@ -25,3 +24,4 @@ composer.lock
 package.json
 to-test.md
 yarn.lock
+.github
