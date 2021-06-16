@@ -29,5 +29,7 @@
 		"php:lint:errors": [
 			"@php:lint --runtime-set ignore_warnings_on_exit 1"
 		]
-	}
+	},
+	"minimum-stability": "dev",
+	"prefer-stable": true
 }
