@@ -27,7 +27,7 @@
 			"phpcbf -p"
 		],
 		"php:lint:errors": [
-			"@phpcs:lint --runtime-set ignore_warnings_on_exit 1"
+			"@php:lint --runtime-set ignore_warnings_on_exit 1"
 		]
 	}
 }
