@@ -71,6 +71,6 @@ jobs:
           # Install repo dependencies
           yarn && yarn build-php
 
-      - name: Run the unit tests
+      - name: Run the compatibility tests
         run: |
-          yarn php:compatibility **/*.php
+          composer php:compatibility -- --report=emacs .

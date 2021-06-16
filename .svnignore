@@ -8,6 +8,7 @@
 .jshintrc
 .npmrc
 .nvmrc
+.phpcs.config.xml
 .phpcs.xml.dist
 .prettierrc
 renovate.json
