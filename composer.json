@@ -12,7 +12,7 @@
 		"automattic/jetpack-autoloader": "^2.10"
 	},
 	"require-dev": {
-		"automattic/jetpack-standards": "master-dev"
+		"automattic/jetpack-standards": "dev-master"
 	},
 	"scripts": {
 		"php:compatibility": "composer install && vendor/bin/phpcs -p -s -n --runtime-set testVersion '5.3-' --standard=PHPCompatibilityWP --ignore=docker,tools,tests,node_modules,vendor --extensions=php",
