@@ -44,7 +44,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '8ab8b266ebb5cafe0bec8b758193001a135631d4',
+      'reference' => 'd465fdb129e02816465ac6415654020ae2452893',
     ),
     'automattic/jetpack-logo' => 
     array (
@@ -53,7 +53,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => 'b3f1a1adb693a87f018daee64db543faedc69503',
+      'reference' => 'b5da7785e2e2ef91784ad9ac707a2ab61ee89d74',
     ),
     'automattic/vaultpress' => 
     array (
