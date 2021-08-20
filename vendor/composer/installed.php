@@ -18,7 +18,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'c70a90bd7e65a56a559ec34b4e9ad39c709f635e',
+      'reference' => '52cd681f04b543f5546aed16fb5ccd7d1b0dbf5e',
     ),
     'automattic/jetpack-logo' => 
     array (
@@ -27,7 +27,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'ea013e4903937e14e6b4971a488dc415f05995c5',
+      'reference' => '5914102d67a027532d1858f5941e4a73d61ced38',
     ),
     'automattic/vaultpress' => 
     array (
