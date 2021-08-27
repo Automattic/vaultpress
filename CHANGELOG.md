@@ -6,6 +6,10 @@ All notable changes to this project will be documented in this file.
 
 This is an alpha version! The changes listed here are not final.
 
+### Changed
+- Tests: update PHPUnit polyfills dependency (yoast/phpunit-polyfills).
+- Update package dependencies
+
 ### Fixed
 - General: avoid PHP notices when using recent versions of PHP.
 
