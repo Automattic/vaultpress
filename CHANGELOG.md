@@ -12,6 +12,9 @@ This is an alpha version! The changes listed here are not final.
 - Updated package dependencies.
 - Update package dependencies
 
+### Removed
+- VaultPress: Remove obsolete hotfixes
+
 ### Fixed
 - General: avoid PHP notices when using recent versions of PHP.
 
