@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## 2.2.1-alpha - unreleased
+
+This is an alpha version! The changes listed here are not final.
+
 ## 2.2.0-beta - 2021-10-07
 ### Changed
 - Tests: update PHPUnit polyfills dependency (yoast/phpunit-polyfills).
