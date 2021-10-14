@@ -6,12 +6,12 @@ All notable changes to this project will be documented in this file.
 
 This is an alpha version! The changes listed here are not final.
 
-## 2.2.0-beta - 2021-10-07
+## 2.2.0 - 2021-10-11
 ### Changed
 - Tests: update PHPUnit polyfills dependency (yoast/phpunit-polyfills).
 - Updated package dependencies.
 
-### Removed
+### Security
 - VaultPress: Remove obsolete hotfixes
 
 ### Fixed
