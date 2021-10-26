@@ -6,6 +6,9 @@ All notable changes to this project will be documented in this file.
 
 This is an alpha version! The changes listed here are not final.
 
+### Changed
+- Set `convertDeprecationsToExceptions` true in PHPUnit config.
+
 ## 2.2.0 - 2021-10-11
 ### Changed
 - Tests: update PHPUnit polyfills dependency (yoast/phpunit-polyfills).
