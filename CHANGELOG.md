@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 This is an alpha version! The changes listed here are not final.
 
 ### Changed
+- Colors: update Jetpack Primary color to match latest brand book.
 - Set `convertDeprecationsToExceptions` true in PHPUnit config.
 - Updated package dependencies
 
