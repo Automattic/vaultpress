@@ -22,10 +22,10 @@
         'automattic/jetpack-logo' => array(
             'pretty_version' => '1.5.x-dev',
             'version' => '1.5.9999999.9999999-dev',
-            'type' => 'library',
+            'type' => 'jetpack-library',
             'install_path' => __DIR__ . '/../automattic/jetpack-logo',
             'aliases' => array(),
-            'reference' => 'e704e7846a7f66349a7a194375802d0e736b8240',
+            'reference' => '19ba4b2289a1eb27bb623d787315bb98ff667fc1',
             'dev_requirement' => false,
         ),
         'automattic/vaultpress' => array(

@@ -68,13 +68,13 @@
             "dist": {
                 "type": "path",
                 "url": "/tmp/jetpack-build/Automattic/jetpack-logo",
-                "reference": "e704e7846a7f66349a7a194375802d0e736b8240"
+                "reference": "19ba4b2289a1eb27bb623d787315bb98ff667fc1"
             },
             "require-dev": {
                 "automattic/jetpack-changelogger": "^3.0",
                 "yoast/phpunit-polyfills": "1.0.2"
             },
-            "type": "library",
+            "type": "jetpack-library",
             "extra": {
                 "autotagger": true,
                 "mirror-repo": "Automattic/jetpack-logo",
