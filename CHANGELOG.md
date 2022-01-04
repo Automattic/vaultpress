@@ -12,6 +12,7 @@ This is an alpha version! The changes listed here are not final.
 - Switch to pcov for code coverage.
 - Tested against WordPress 5.8
 - Updated package dependencies
+- Updated package dependencies
 
 ## 2.2.0 - 2021-10-11
 ### Changed
