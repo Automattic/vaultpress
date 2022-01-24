@@ -6,17 +6,17 @@ $vendorDir = dirname(__DIR__);
 $baseDir   = dirname($vendorDir);
 
 return array(
-	'Automattic\\Jetpack\\Autoloader\\AutoloadGenerator' => array(
+	'Automattic\\Jetpack\\Autoloader\\AutoloadProcessor' => array(
 		'version' => '2.10.9999999.9999999-dev',
-		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/AutoloadGenerator.php'
+		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/AutoloadProcessor.php'
 	),
 	'Automattic\\Jetpack\\Autoloader\\CustomAutoloaderPlugin' => array(
 		'version' => '2.10.9999999.9999999-dev',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/CustomAutoloaderPlugin.php'
 	),
-	'Automattic\\Jetpack\\Autoloader\\AutoloadProcessor' => array(
+	'Automattic\\Jetpack\\Autoloader\\AutoloadGenerator' => array(
 		'version' => '2.10.9999999.9999999-dev',
-		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/AutoloadProcessor.php'
+		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/AutoloadGenerator.php'
 	),
 	'Automattic\\Jetpack\\Autoloader\\AutoloadFileWriter' => array(
 		'version' => '2.10.9999999.9999999-dev',
