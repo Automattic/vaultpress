@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 This is an alpha version! The changes listed here are not final.
 
 ### Changed
+- Build: do not ship PHPCS configuration file
 - Core: start new release cycle.
 
 ## 2.2.1 - 2022-02-01
