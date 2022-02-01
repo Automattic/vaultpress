@@ -8,6 +8,7 @@ This is an alpha version! The changes listed here are not final.
 
 ### Changed
 - Colors: update Jetpack Primary color to match latest brand book.
+- General: update WordPress tested up to version, since the plugin works with WordPress 5.9.
 - Set `convertDeprecationsToExceptions` true in PHPUnit config.
 - Switch to pcov for code coverage.
 - Tested against WordPress 5.8
