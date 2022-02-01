@@ -2,19 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
-## 2.2.1-alpha - unreleased
-
-This is an alpha version! The changes listed here are not final.
-
+## 2.2.1 - 2022-02-01
 ### Changed
-- Colors: update Jetpack Primary color to match latest brand book.
+- Colors: update colors to match the latest iterations of our brand.
 - General: update WordPress tested up to version, since the plugin works with WordPress 5.9.
 - Set `convertDeprecationsToExceptions` true in PHPUnit config.
 - Switch to pcov for code coverage.
-- Tested against WordPress 5.8
-- Updated package dependencies
-- Updated package dependencies
-- Updated package dependencies
+- Updated package dependencies.
+
 
 ## 2.2.0 - 2021-10-11
 ### Changed
