@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## 2.2.2-alpha - unreleased
+
+This is an alpha version! The changes listed here are not final.
+
+### Changed
+- Core: start new release cycle.
+
 ## 2.2.1 - 2022-02-01
 ### Changed
 - Colors: update colors to match the latest iterations of our brand.
@@ -9,7 +16,6 @@ All notable changes to this project will be documented in this file.
 - Set `convertDeprecationsToExceptions` true in PHPUnit config.
 - Switch to pcov for code coverage.
 - Updated package dependencies.
-
 
 ## 2.2.0 - 2021-10-11
 ### Changed
