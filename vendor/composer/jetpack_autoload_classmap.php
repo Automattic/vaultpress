@@ -10,6 +10,10 @@ return array(
 		'version' => '2.10.9999999.9999999-dev',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/AutoloadProcessor.php'
 	),
+	'Automattic\\Jetpack\\Autoloader\\AutoloadFileWriter' => array(
+		'version' => '2.10.9999999.9999999-dev',
+		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/AutoloadFileWriter.php'
+	),
 	'Automattic\\Jetpack\\Autoloader\\CustomAutoloaderPlugin' => array(
 		'version' => '2.10.9999999.9999999-dev',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/CustomAutoloaderPlugin.php'
@@ -17,10 +21,6 @@ return array(
 	'Automattic\\Jetpack\\Autoloader\\AutoloadGenerator' => array(
 		'version' => '2.10.9999999.9999999-dev',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/AutoloadGenerator.php'
-	),
-	'Automattic\\Jetpack\\Autoloader\\AutoloadFileWriter' => array(
-		'version' => '2.10.9999999.9999999-dev',
-		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/AutoloadFileWriter.php'
 	),
 	'Automattic\\Jetpack\\Autoloader\\ManifestGenerator' => array(
 		'version' => '2.10.9999999.9999999-dev',
