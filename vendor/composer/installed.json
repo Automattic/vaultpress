@@ -7,7 +7,7 @@
             "dist": {
                 "type": "path",
                 "url": "/tmp/jetpack-build/Automattic/jetpack-autoloader",
-                "reference": "c581928dc1da3e61018b376d4308b179b385abb3"
+                "reference": "4ea9a6f0150e1d28955e88ffbd116d82f3362b24"
             },
             "require": {
                 "composer-plugin-api": "^1.1 || ^2.0"
@@ -65,7 +65,7 @@
             "dist": {
                 "type": "path",
                 "url": "/tmp/jetpack-build/Automattic/jetpack-logo",
-                "reference": "477970390473239479d5987ba897b25f31fdc217"
+                "reference": "d73aeffbd57045f78c907ae9945b630e6b4d03d9"
             },
             "require-dev": {
                 "automattic/jetpack-changelogger": "^3.0",
