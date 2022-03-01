@@ -16,7 +16,7 @@
             'type' => 'composer-plugin',
             'install_path' => __DIR__ . '/../automattic/jetpack-autoloader',
             'aliases' => array(),
-            'reference' => '775366af406030270b9eb9a945c9956fb1c04d8b',
+            'reference' => 'c7849539520917f069d0b4ad75734d7bfc5e112a',
             'dev_requirement' => false,
         ),
         'automattic/jetpack-logo' => array(
@@ -25,7 +25,7 @@
             'type' => 'jetpack-library',
             'install_path' => __DIR__ . '/../automattic/jetpack-logo',
             'aliases' => array(),
-            'reference' => 'b1b5573e5fc2f71cae54cc9290b50657b668be29',
+            'reference' => '791c22448fc7621ef7b7bbc33ee9d4136b714986',
             'dev_requirement' => false,
         ),
         'automattic/vaultpress' => array(
