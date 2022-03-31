@@ -11,7 +11,6 @@ This is an alpha version! The changes listed here are not final.
 - Core: start new release cycle.
 - Updated composer.lock
 - Updated package dependencies
-- Updated package dependencies
 
 ## 2.2.1 - 2022-02-01
 ### Changed
