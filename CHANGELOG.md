@@ -9,6 +9,7 @@ This is an alpha version! The changes listed here are not final.
 ### Changed
 - Build: do not ship PHPCS configuration file
 - Core: start new release cycle.
+- Janitorial: require a more recent version of WordPress now that WP 6.0 is coming out.
 - Updated composer.lock
 - Updated package dependencies
 
