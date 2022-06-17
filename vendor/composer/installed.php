@@ -1,7 +1,7 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => 'dev-master',
-        'version' => 'dev-master',
+        'pretty_version' => 'dev-trunk',
+        'version' => 'dev-trunk',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -16,7 +16,7 @@
             'type' => 'composer-plugin',
             'install_path' => __DIR__ . '/../automattic/jetpack-autoloader',
             'aliases' => array(),
-            'reference' => 'ed30783566b41a4f33a6f450c4b92e8b61acb937',
+            'reference' => 'aaa1ab3dea917a364f0555244c2529498357a3c2',
             'dev_requirement' => false,
         ),
         'automattic/jetpack-logo' => array(
@@ -25,12 +25,12 @@
             'type' => 'jetpack-library',
             'install_path' => __DIR__ . '/../automattic/jetpack-logo',
             'aliases' => array(),
-            'reference' => 'd30f1ca645e802cab9d7638c4a0a4b75bb0bf973',
+            'reference' => '58446ae920f6b90e28e348b0dea584b35f909438',
             'dev_requirement' => false,
         ),
         'automattic/vaultpress' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
+            'pretty_version' => 'dev-trunk',
+            'version' => 'dev-trunk',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
