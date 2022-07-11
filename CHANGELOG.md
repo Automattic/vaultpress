@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## 2.2.3-alpha - unreleased
+
+This is an alpha version! The changes listed here are not final.
+
 ## 2.2.2 - 2022-07-06
 ### Changed
 - Build: do not ship PHPCS configuration file. [#22604]
