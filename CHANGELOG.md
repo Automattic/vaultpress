@@ -8,6 +8,7 @@ This is an alpha version! The changes listed here are not final.
 
 ### Changed
 - Compatibility: WordPress 6.1 compatibility
+- Update README references from VaultPress to Jetpack VaultPress
 
 ## 2.2.2 - 2022-07-06
 ### Changed
