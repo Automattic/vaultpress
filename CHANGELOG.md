@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 This is an alpha version! The changes listed here are not final.
 
 ### Changed
+- Add a note to README (visible in wordpress.org) that Jetpack VaultPress is deprecated.
 - Compatibility: WordPress 6.1 compatibility
 - Update README references from VaultPress to Jetpack VaultPress
 
