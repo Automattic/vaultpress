@@ -2,14 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
-## 2.2.3-alpha - unreleased
-
-This is an alpha version! The changes listed here are not final.
-
+## 2.2.3 - 2023-03-08
 ### Changed
-- Add a note to README (visible in wordpress.org) that Jetpack VaultPress is deprecated.
-- Compatibility: WordPress 6.1 compatibility
-- Update README references from VaultPress to Jetpack VaultPress
+- Add a note to README (visible in wordpress.org) that Jetpack VaultPress is deprecated. [#27465]
+- Compatibility: WordPress 6.1 compatibility [#27084]
+- Updated package dependencies.
+- Update README references from VaultPress to Jetpack VaultPress [#27412]
 
 ## 2.2.2 - 2022-07-06
 ### Changed
