@@ -2,12 +2,18 @@
     "packages": [
         {
             "name": "automattic/jetpack-autoloader",
-            "version": "2.11.16",
+            "version": "v2.11.16",
             "version_normalized": "2.11.16.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Automattic/jetpack-autoloader.git",
+                "reference": "43bc969fd90ce3d92e7b75fbf384a5fd03963dad"
+            },
             "dist": {
-                "type": "path",
-                "url": "/tmp/jetpack-build/Automattic/jetpack-autoloader",
-                "reference": "d0fde50fefdba6402434421822203bdca20cf051"
+                "type": "zip",
+                "url": "https://api.github.com/repos/Automattic/jetpack-autoloader/zipball/43bc969fd90ce3d92e7b75fbf384a5fd03963dad",
+                "reference": "43bc969fd90ce3d92e7b75fbf384a5fd03963dad",
+                "shasum": ""
             },
             "require": {
                 "composer-plugin-api": "^1.1 || ^2.0"
@@ -16,6 +22,7 @@
                 "automattic/jetpack-changelogger": "^3.3.2",
                 "yoast/phpunit-polyfills": "1.0.4"
             },
+            "time": "2023-02-20T19:47:16+00:00",
             "type": "composer-plugin",
             "extra": {
                 "autotagger": true,
@@ -30,43 +37,43 @@
             },
             "installation-source": "dist",
             "autoload": {
-                "classmap": [
-                    "src/AutoloadGenerator.php"
-                ],
                 "psr-4": {
                     "Automattic\\Jetpack\\Autoloader\\": "src"
-                }
-            },
-            "scripts": {
-                "phpunit": [
-                    "./vendor/phpunit/phpunit/phpunit --colors=always"
-                ],
-                "test-php": [
-                    "@composer phpunit"
+                },
+                "classmap": [
+                    "src/AutoloadGenerator.php"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "GPL-2.0-or-later"
             ],
             "description": "Creates a custom autoloader for a plugin or theme.",
-            "transport-options": {
-                "relative": false
+            "support": {
+                "source": "https://github.com/Automattic/jetpack-autoloader/tree/v2.11.16"
             },
             "install-path": "../automattic/jetpack-autoloader"
         },
         {
             "name": "automattic/jetpack-logo",
-            "version": "1.5.22",
+            "version": "v1.5.22",
             "version_normalized": "1.5.22.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Automattic/jetpack-logo.git",
+                "reference": "21b4ac9b32556ffdace7b7e22d21a954e01d5229"
+            },
             "dist": {
-                "type": "path",
-                "url": "/tmp/jetpack-build/Automattic/jetpack-logo",
-                "reference": "3490b56b984b15ac6426f65b389d103231a1926f"
+                "type": "zip",
+                "url": "https://api.github.com/repos/Automattic/jetpack-logo/zipball/21b4ac9b32556ffdace7b7e22d21a954e01d5229",
+                "reference": "21b4ac9b32556ffdace7b7e22d21a954e01d5229",
+                "shasum": ""
             },
             "require-dev": {
                 "automattic/jetpack-changelogger": "^3.3.2",
                 "yoast/phpunit-polyfills": "1.0.4"
             },
+            "time": "2023-02-20T19:47:14+00:00",
             "type": "jetpack-library",
             "extra": {
                 "autotagger": true,
@@ -84,20 +91,13 @@
                     "src/"
                 ]
             },
-            "scripts": {
-                "phpunit": [
-                    "./vendor/phpunit/phpunit/phpunit --colors=always"
-                ],
-                "test-php": [
-                    "@composer phpunit"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "GPL-2.0-or-later"
             ],
             "description": "A logo for Jetpack",
-            "transport-options": {
-                "relative": false
+            "support": {
+                "source": "https://github.com/Automattic/jetpack-logo/tree/v1.5.22"
             },
             "install-path": "../automattic/jetpack-logo"
         }
