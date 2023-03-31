@@ -7,7 +7,7 @@
             "dist": {
                 "type": "path",
                 "url": "/tmp/jetpack-build/Automattic/jetpack-autoloader",
-                "reference": "ad3224b67bfe83cac78751a5714470d260b00460"
+                "reference": "d56c28e3570ef060cb7e82bc643bb8a9d26a0822"
             },
             "require": {
                 "composer-plugin-api": "^1.1 || ^2.0"
@@ -56,12 +56,12 @@
         },
         {
             "name": "automattic/jetpack-logo",
-            "version": "1.5.22",
-            "version_normalized": "1.5.22.0",
+            "version": "1.6.0-alpha",
+            "version_normalized": "1.6.0.0-alpha",
             "dist": {
                 "type": "path",
                 "url": "/tmp/jetpack-build/Automattic/jetpack-logo",
-                "reference": "d24acc4c789e0b9ff02222557e8921fff49072c4"
+                "reference": "fb57aefb75553a3243828b469d075c7f0bbc1e0b"
             },
             "require-dev": {
                 "automattic/jetpack-changelogger": "^3.3.2",
@@ -75,7 +75,7 @@
                     "link-template": "https://github.com/Automattic/jetpack-logo/compare/v${old}...v${new}"
                 },
                 "branch-alias": {
-                    "dev-trunk": "1.5.x-dev"
+                    "dev-trunk": "1.6.x-dev"
                 }
             },
             "installation-source": "dist",
