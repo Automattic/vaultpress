@@ -7,7 +7,7 @@
             "dist": {
                 "type": "path",
                 "url": "/tmp/jetpack-build/Automattic/jetpack-autoloader",
-                "reference": "3913a66918be8e4547e7fd67afcebb12a218df9e"
+                "reference": "ffda0630638cad8646a87f4fc101a88f8958502d"
             },
             "require": {
                 "composer-plugin-api": "^1.1 || ^2.0"
@@ -56,16 +56,19 @@
         },
         {
             "name": "automattic/jetpack-logo",
-            "version": "1.6.0",
-            "version_normalized": "1.6.0.0",
+            "version": "1.6.1-alpha",
+            "version_normalized": "1.6.1.0-alpha",
             "dist": {
                 "type": "path",
                 "url": "/tmp/jetpack-build/Automattic/jetpack-logo",
-                "reference": "b91701628a203cde38894588b35f2637f901d8fd"
+                "reference": "f4ef4ac1dd76188fe7791613574c8a35f3aa92ed"
             },
             "require-dev": {
                 "automattic/jetpack-changelogger": "^3.3.2",
                 "yoast/phpunit-polyfills": "1.0.4"
+            },
+            "suggest": {
+                "automattic/jetpack-autoloader": "Allow for better interoperability with other plugins that use this package."
             },
             "type": "jetpack-library",
             "extra": {
