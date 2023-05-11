@@ -2,12 +2,12 @@
     "packages": [
         {
             "name": "automattic/jetpack-autoloader",
-            "version": "2.11.20-alpha",
-            "version_normalized": "2.11.20.0-alpha",
+            "version": "2.11.20",
+            "version_normalized": "2.11.20.0",
             "dist": {
                 "type": "path",
                 "url": "/tmp/jetpack-build/Automattic/jetpack-autoloader",
-                "reference": "0e3a921f26a8f869e0fb03c2fea745742c21c67c"
+                "reference": "a4b1289238fec5510f6de000eb4d4564525866b3"
             },
             "require": {
                 "composer-plugin-api": "^1.1 || ^2.0"
@@ -61,7 +61,7 @@
             "dist": {
                 "type": "path",
                 "url": "/tmp/jetpack-build/Automattic/jetpack-logo",
-                "reference": "c482ec6cbb0dc20ea33259185df546827baaeef9"
+                "reference": "a630a240f9e05ee3efc92074315b961fac5eb8c6"
             },
             "require-dev": {
                 "automattic/jetpack-changelogger": "^3.3.2",
