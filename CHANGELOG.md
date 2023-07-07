@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## 2.2.5-alpha - unreleased
+
+This is an alpha version! The changes listed here are not final.
+
 ## 2.2.4 - 2023-07-06
 ### Changed
 - General: indicate full compatibility with the latest version of WordPress, 6.2. [#29341]
