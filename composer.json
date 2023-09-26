@@ -9,7 +9,7 @@
 	},
 	"require": {
 		"automattic/jetpack-logo": "^1.6.3",
-		"automattic/jetpack-autoloader": "^2.11.23"
+		"automattic/jetpack-autoloader": "^2.12.0-alpha"
 	},
 	"require-dev": {
 		"yoast/phpunit-polyfills": "1.1.0",
