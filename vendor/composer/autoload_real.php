@@ -22,6 +22,8 @@ class ComposerAutoloaderInit9559eef123208b7d1b9c15b978567267_vaultpressⓥ2_2_5_
             return self::$loader;
         }
 
+        require __DIR__ . '/platform_check.php';
+
         spl_autoload_register(array('ComposerAutoloaderInit9559eef123208b7d1b9c15b978567267_vaultpressⓥ2_2_5_alpha', 'loadClassLoader'), true, true);
         self::$loader = $loader = new \Composer\Autoload\ClassLoader(\dirname(__DIR__));
         spl_autoload_unregister(array('ComposerAutoloaderInit9559eef123208b7d1b9c15b978567267_vaultpressⓥ2_2_5_alpha', 'loadClassLoader'));
