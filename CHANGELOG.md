@@ -2,17 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
-## 2.2.6-alpha - unreleased
-
-This is an alpha version! The changes listed here are not final.
-
+## 3.0.0 - 2024-02-21
 ### Changed
-- General: indicate compatibility with the upcoming version of WordPress, 6.5.
-- Updated package dependencies.
+- General: indicate compatibility with the upcoming version of WordPress, 6.5. [#35820]
+- General: updated PHP requirement to PHP 7.0+
+- Updated package dependencies. [#35591]
 
 ## 2.2.5 - 2024-02-07
 ### Changed
 - General: indicate full compatibility with the latest version of WordPress, 6.4. [#33776]
+- General: updated PHP requirement to PHP 7.0+
 - Updated package dependencies.
 
 ## 2.2.4 - 2023-07-06
