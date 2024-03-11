@@ -6,6 +6,9 @@ All notable changes to this project will be documented in this file.
 
 This is an alpha version! The changes listed here are not final.
 
+### Changed
+- Updated package dependencies.
+
 ## 3.0.0 - 2024-02-21
 ### Changed
 - General: indicate compatibility with the upcoming version of WordPress, 6.5. [#35820]
