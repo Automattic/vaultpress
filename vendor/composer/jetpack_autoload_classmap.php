@@ -19,7 +19,7 @@ return array(
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/class-autoloader-locator.php'
 	),
 	'Automattic\\Jetpack\\Assets\\Logo' => array(
-		'version' => '2.0.1.0-alpha1710273234',
+		'version' => '2.0.1.0',
 		'path'    => $vendorDir . '/automattic/jetpack-logo/src/class-logo.php'
 	),
 	'Automattic\\Jetpack\\Autoloader\\AutoloadFileWriter' => array(
