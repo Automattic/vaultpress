@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 This is an alpha version! The changes listed here are not final.
 
 ### Changed
+- Only show installation errors on plugins page
 - Updated package dependencies.
 
 ## 3.0.0 - 2024-02-21
