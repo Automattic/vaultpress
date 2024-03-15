@@ -8,8 +8,8 @@
 		"issues": "https://github.com/Automattic/jetpack/issues"
 	},
 	"require": {
-		"automattic/jetpack-logo": "^2.0.1",
-		"automattic/jetpack-autoloader": "^3.0.3"
+		"automattic/jetpack-logo": "^2.0.2-alpha",
+		"automattic/jetpack-autoloader": "^3.0.4-alpha"
 	},
 	"require-dev": {
 		"yoast/phpunit-polyfills": "1.1.0",
