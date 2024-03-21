@@ -6,6 +6,9 @@ All notable changes to this project will be documented in this file.
 
 This is an alpha version! The changes listed here are not final.
 
+### Added
+- Hook into red bubble notification when bad installation is detected
+
 ### Changed
 - Only show installation errors on plugins page
 - Updated package dependencies.
