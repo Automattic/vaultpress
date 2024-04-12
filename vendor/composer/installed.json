@@ -7,14 +7,14 @@
             "dist": {
                 "type": "path",
                 "url": "/tmp/jetpack-build/Automattic/jetpack-autoloader",
-                "reference": "bd3c2488f6c76e5822d8c1a8519cf05c133bd8a8"
+                "reference": "f999a7e787007cbc49b221c58502dad7e79418a4"
             },
             "require": {
                 "composer-plugin-api": "^1.1 || ^2.0",
                 "php": ">=7.0"
             },
             "require-dev": {
-                "automattic/jetpack-changelogger": "^4.2.0",
+                "automattic/jetpack-changelogger": "^4.2.1-alpha",
                 "composer/composer": "^1.1 || ^2.0",
                 "yoast/phpunit-polyfills": "1.1.0"
             },
@@ -74,13 +74,13 @@
             "dist": {
                 "type": "path",
                 "url": "/tmp/jetpack-build/Automattic/jetpack-logo",
-                "reference": "550e4c1ca97a57254243ec0d06dd697f78aea18e"
+                "reference": "d0f6df33d4293c2344f68b7c13b9fdaf587d7b8b"
             },
             "require": {
                 "php": ">=7.0"
             },
             "require-dev": {
-                "automattic/jetpack-changelogger": "^4.2.0",
+                "automattic/jetpack-changelogger": "^4.2.1-alpha",
                 "yoast/phpunit-polyfills": "1.1.0"
             },
             "suggest": {
