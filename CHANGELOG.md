@@ -15,6 +15,9 @@ This is an alpha version! The changes listed here are not final.
 - Only show installation errors on plugins page
 - Updated package dependencies.
 
+### Fixed
+- Lossless image optimization for images (should improve performance with no visible changes).
+
 ## 3.0.0 - 2024-02-21
 ### Changed
 - General: indicate compatibility with the upcoming version of WordPress, 6.5. [#35820]
