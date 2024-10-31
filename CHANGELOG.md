@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 This is an alpha version! The changes listed here are not final.
 
 ### Added
+- Enable test coverage.
 - Hook into red bubble notification when bad installation is detected
 
 ### Changed
