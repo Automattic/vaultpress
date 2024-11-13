@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## 3.0.1-alpha - unreleased
+## 4.0.0-alpha - unreleased
 
 This is an alpha version! The changes listed here are not final.
 
@@ -16,6 +16,9 @@ This is an alpha version! The changes listed here are not final.
 - General: use wp_admin_notice function introduced in WP 6.4 to display notices.
 - Only show installation errors on plugins page
 - Updated package dependencies.
+
+### Removed
+- General: Update minimum PHP version to 7.2.
 
 ### Fixed
 - Lossless image optimization for images (should improve performance with no visible changes).

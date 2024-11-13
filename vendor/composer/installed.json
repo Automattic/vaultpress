@@ -2,19 +2,19 @@
     "packages": [
         {
             "name": "automattic/jetpack-autoloader",
-            "version": "3.1.3",
-            "version_normalized": "3.1.3.0",
+            "version": "4.0.0-alpha.1731518828",
+            "version_normalized": "4.0.0.0-alpha1731518828",
             "dist": {
                 "type": "path",
                 "url": "/tmp/jetpack-build/Automattic/jetpack-autoloader",
-                "reference": "99c5b56aaf7ec0f0ba52cdb8dcb2dd570e6c3592"
+                "reference": "eb575488e0a388334ee4009226c8fb3618958469"
             },
             "require": {
                 "composer-plugin-api": "^1.1 || ^2.0",
-                "php": ">=7.0"
+                "php": ">=7.2"
             },
             "require-dev": {
-                "automattic/jetpack-changelogger": "^4.2.8",
+                "automattic/jetpack-changelogger": "^5.0.0-alpha",
                 "composer/composer": "^1.1 || ^2.0",
                 "yoast/phpunit-polyfills": "^1.1.1"
             },
@@ -30,7 +30,7 @@
                     "::VERSION": "src/AutoloadGenerator.php"
                 },
                 "branch-alias": {
-                    "dev-trunk": "3.1.x-dev"
+                    "dev-trunk": "4.0.x-dev"
                 }
             },
             "installation-source": "dist",
@@ -73,18 +73,18 @@
         },
         {
             "name": "automattic/jetpack-logo",
-            "version": "2.0.5",
-            "version_normalized": "2.0.5.0",
+            "version": "3.0.0-alpha.1731518828",
+            "version_normalized": "3.0.0.0-alpha1731518828",
             "dist": {
                 "type": "path",
                 "url": "/tmp/jetpack-build/Automattic/jetpack-logo",
-                "reference": "fbb196bf654d3afabcf5f27d23ab949b53a9def6"
+                "reference": "a15235c1809cfdf3ecc4018cb0dd376fe41b2ef1"
             },
             "require": {
-                "php": ">=7.0"
+                "php": ">=7.2"
             },
             "require-dev": {
-                "automattic/jetpack-changelogger": "^4.2.8",
+                "automattic/jetpack-changelogger": "^5.0.0-alpha",
                 "yoast/phpunit-polyfills": "^1.1.1"
             },
             "suggest": {
@@ -98,7 +98,7 @@
                     "link-template": "https://github.com/Automattic/jetpack-logo/compare/v${old}...v${new}"
                 },
                 "branch-alias": {
-                    "dev-trunk": "2.0.x-dev"
+                    "dev-trunk": "3.0.x-dev"
                 }
             },
             "installation-source": "dist",
