@@ -18,6 +18,7 @@ This is an alpha version! The changes listed here are not final.
 - Updated package dependencies.
 
 ### Removed
+- Cleaned up legacy code.
 - General: Update minimum PHP version to 7.2.
 
 ### Fixed
