@@ -2,28 +2,24 @@
 
 All notable changes to this project will be documented in this file.
 
-## 4.0.0-alpha - unreleased
-
-This is an alpha version! The changes listed here are not final.
-
+## 4.0.0 - 2025-01-10
 ### Added
-- Enable test coverage.
-- Hook into red bubble notification when bad installation is detected
+- Enable test coverage. [#39961]
+- Hook into red bubble notification when bad installation is detected. [#36449]
 
 ### Changed
-- General: indicate compatibility with the upcoming version of WordPress - 6.6.
-- General: indicate compatibility with the upcoming version of WordPress - 6.7.
-- General: use wp_admin_notice function introduced in WP 6.4 to display notices.
-- Only show installation errors on plugins page
-- Updated package dependencies.
+- General: Indicate compatibility with the upcoming version of WordPress - 6.6. [#37962]
+- General: Indicate compatibility with the upcoming version of WordPress - 6.7. [#39786]
+- General: Use wp_admin_notice function introduced in WP 6.4 to display notices. [#37051]
+- Only show installation errors on plugins page. [#36390]
+- Updated package dependencies. [#36309] [#36775] [#37348] [#37767] [#38228] [#38822] [#39004] [#39288] [#39653] [#40116] [#40515]
 
 ### Removed
-- Cleaned up legacy code.
-- General: Update minimum PHP version to 7.2.
+- Cleaned up legacy code. [#40200]
+- General: Update minimum PHP version to 7.2. [#40147]
 
 ### Fixed
-- Lossless image optimization for images (should improve performance with no visible changes).
-- Revert recent SVG image optimizations.
+- Lossless image optimization for images (should improve performance with no visible changes). [#38750] [#38981]
 
 ## 3.0.0 - 2024-02-21
 ### Changed
