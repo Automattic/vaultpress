@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         'automattic/jetpack-autoloader' => array(
-            'pretty_version' => '5.0.1-alpha.1737387586',
-            'version' => '5.0.1.0-alpha1737387586',
-            'reference' => '2cb27bf7b523414ad3aa1d8c22bfe5b5d274df32',
+            'pretty_version' => '5.0.1',
+            'version' => '5.0.1.0',
+            'reference' => 'ac9a6b02332dcfbe7fcf90758efee49c2423ef0f',
             'type' => 'composer-plugin',
             'install_path' => __DIR__ . '/../automattic/jetpack-autoloader',
             'aliases' => array(),
@@ -22,7 +22,7 @@
         'automattic/jetpack-logo' => array(
             'pretty_version' => '3.0.0',
             'version' => '3.0.0.0',
-            'reference' => '99b60a27d8a821a533c52b7f85749538c731ef0f',
+            'reference' => 'c0e36c1f455a2e77d7924cd06652c11d6d1b6e5e',
             'type' => 'jetpack-library',
             'install_path' => __DIR__ . '/../automattic/jetpack-logo',
             'aliases' => array(),
