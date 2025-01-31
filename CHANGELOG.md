@@ -10,6 +10,9 @@ This is an alpha version! The changes listed here are not final.
 - Code: Use function-style exit() and die() with a default status code of 0.
 - Updated package dependencies.
 
+### Fixed
+- Code: Remove extra params on function calls.
+
 ## 4.0.0 - 2025-01-10
 ### Added
 - Enable test coverage. [#39961]
