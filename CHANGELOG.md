@@ -11,6 +11,7 @@ This is an alpha version! The changes listed here are not final.
 - Updated package dependencies.
 
 ### Fixed
+- Code: Prevent dynamic class properties.
 - Code: Remove extra params on function calls.
 
 ## 4.0.0 - 2025-01-10
