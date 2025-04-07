@@ -2,20 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
-## 4.0.1-alpha - unreleased
-
-This is an alpha version! The changes listed here are not final.
-
+## 4.0.1 - 2025-04-07
 ### Changed
-- Code: First pass of style coding standards.
-- Code: Use function-style exit() and die() with a default status code of 0.
-- General: indicate compatibility with the upcoming version of WordPress - 6.8.
-- Updated package dependencies.
-- Update package dependencies.
+- Code: First pass of style coding standards. [#42734]
+- Code: Use function-style `exit()` and `die()` with a default status code of 0. [#41167]
+- General: Indicate compatibility with WordPress 6.8. [#42701]
+- Update package dependencies. [#40980] [#41659] [#42180] [#42815]
 
 ### Fixed
-- Code: Prevent dynamic class properties.
-- Code: Remove extra params on function calls.
+- Code: Prevent dynamic class properties. [#41857]
+- Code: Remove extra params on function calls. [#41263]
 
 ## 4.0.0 - 2025-01-10
 ### Added
