@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## 4.0.2-alpha - unreleased
+
+This is an alpha version! The changes listed here are not final.
+
+### Fixed
+- Code: Update stylesheets to use WordPress font styles.
+
 ## 4.0.1 - 2025-04-07
 ### Changed
 - Code: First pass of style coding standards. [#42734]
