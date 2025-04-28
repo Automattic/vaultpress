@@ -10,6 +10,7 @@ This is an alpha version! The changes listed here are not final.
 - Code: Update stylesheets to use hex instead of named colors.
 - Code: Update stylesheets to use WordPress font styles.
 - Linting: Clean up various Stylelint violations.
+- Linting: Do additional stylesheet cleanup.
 - Linting: Fix more Stylelint violations.
 - Linting: Remove outdated vendor prefixes in stylesheets.
 - Linting: Use double colon notation for pseudo-element selectors.
