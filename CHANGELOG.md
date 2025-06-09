@@ -2,21 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
-## 4.0.2-alpha - unreleased
-
-This is an alpha version! The changes listed here are not final.
-
+## 4.0.2 - 2025-06-09
 ### Changed
-- Update package dependencies.
+- Update package dependencies. [#43425] [#43839]
 
 ### Fixed
-- Code: Update stylesheets to use hex instead of named colors.
-- Code: Update stylesheets to use WordPress font styles.
-- Linting: Clean up various Stylelint violations.
-- Linting: Do additional stylesheet cleanup.
-- Linting: Fix more Stylelint violations.
-- Linting: Remove outdated vendor prefixes in stylesheets.
-- Linting: Use double colon notation for pseudo-element selectors.
+- Code: Update stylesheets to use hex instead of named colors. [#42920]
+- Code: Update stylesheets to use WordPress font styles. [#42928]
+- Linting: Clean up various Stylelint violations. [#43166]
+- Linting: Do additional stylesheet cleanup. [#43247]
+- Linting: Fix more Stylelint violations. [#43213]
+- Linting: Remove outdated vendor prefixes in stylesheets. [#43219]
+- Linting: Use double colon notation for pseudo-element selectors. [#43019]
 
 ## 4.0.1 - 2025-04-07
 ### Changed
