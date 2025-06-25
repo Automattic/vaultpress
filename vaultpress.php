@@ -3,7 +3,7 @@
  * Plugin Name: VaultPress
  * Plugin URI: http://vaultpress.com/?utm_source=plugin-uri&amp;utm_medium=plugin-description&amp;utm_campaign=1.0
  * Description: Protect your content, themes, plugins, and settings with <strong>realtime backup</strong> and <strong>automated security scanning</strong> from <a href="http://vaultpress.com/?utm_source=wp-admin&amp;utm_medium=plugin-description&amp;utm_campaign=1.0" rel="nofollow">VaultPress</a>. Activate, enter your registration key, and never worry again. <a href="http://vaultpress.com/help/?utm_source=wp-admin&amp;utm_medium=plugin-description&amp;utm_campaign=1.0" rel="nofollow">Need some help?</a>
- * Version: 4.0.2
+ * Version: 4.0.3-alpha
  * Author: Automattic
  * Author URI: http://vaultpress.com/?utm_source=author-uri&amp;utm_medium=plugin-description&amp;utm_campaign=1.0
  * License: GPL2+
@@ -17,7 +17,7 @@
 defined( 'ABSPATH' ) || die( 0 );
 
 define( 'VAULTPRESS__MINIMUM_PHP_VERSION', '7.2' );
-define( 'VAULTPRESS__VERSION', '4.0.2' );
+define( 'VAULTPRESS__VERSION', '4.0.3-alpha' );
 define( 'VAULTPRESS__PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 
 /**
@@ -2320,8 +2320,11 @@ JS;
 			if ( ! $this->check_firewall() )
 				return false;
 		}
+		if ( ! is_string( $sig ) ) {
+			return false;
+		}
 		$sig = explode( ':', $sig );
-		if ( !is_array( $sig ) || count( $sig ) != 2 || !isset( $sig[0] ) || !isset( $sig[1] ) ) {
+		if ( count( $sig ) !== 2 || ! isset( $sig[0] ) || ! isset( $sig[1] ) ) {
 			$__vp_validate_error = array( 'error' => 'invalid_signature_format' );
 			return false;
 		}
