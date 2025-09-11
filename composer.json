@@ -9,7 +9,7 @@
 	},
 	"require": {
 		"automattic/jetpack-logo": "^3.0.5",
-		"automattic/jetpack-autoloader": "^5.0.9"
+		"automattic/jetpack-autoloader": "^5.0.10-alpha"
 	},
 	"require-dev": {
 		"yoast/phpunit-polyfills": "^4.0.0",
@@ -30,7 +30,7 @@
 	"minimum-stability": "dev",
 	"prefer-stable": true,
 	"config": {
-		"autoloader-suffix": "9559eef123208b7d1b9c15b978567267_vaultpressⓥ4_0_3",
+		"autoloader-suffix": "9559eef123208b7d1b9c15b978567267_vaultpressⓥ4_0_4_alpha",
 		"allow-plugins": {
 			"automattic/jetpack-autoloader": true
 		}
