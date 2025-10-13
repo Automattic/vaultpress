@@ -6,6 +6,9 @@ All notable changes to this project will be documented in this file.
 
 This is an alpha version! The changes listed here are not final.
 
+### Changed
+- Update package dependencies.
+
 ## 4.0.3 - 2025-09-09
 ### Changed
 - Update package dependencies. [#44206] [#44725] [#45096]
