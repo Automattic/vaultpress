@@ -6,6 +6,9 @@ All notable changes to this project will be documented in this file.
 
 This is an alpha version! The changes listed here are not final.
 
+### Added
+- Tested up to WordPress 6.9
+
 ### Changed
 - Update package dependencies.
 
