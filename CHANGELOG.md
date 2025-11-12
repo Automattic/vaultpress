@@ -2,15 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
-## 4.0.4-alpha - unreleased
-
-This is an alpha version! The changes listed here are not final.
-
+## 4.0.4 - 2025-11-12
 ### Added
-- Tested up to WordPress 6.9
+- Tested up to WordPress 6.9. [#45571]
 
 ### Changed
-- Update package dependencies.
+- Update package dependencies. [#45478]
 
 ## 4.0.3 - 2025-09-09
 ### Changed
