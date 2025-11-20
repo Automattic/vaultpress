@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## 4.0.5-alpha - unreleased
+
+This is an alpha version! The changes listed here are not final.
+
+### Fixed
+- Phan: Address PhanPossiblyUndeclaredVariable violations.
+
 ## 4.0.4 - 2025-11-12
 ### Added
 - Tested up to WordPress 6.9. [#45571]
