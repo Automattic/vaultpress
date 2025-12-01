@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## 4.0.7-alpha - unreleased
+
+This is an alpha version! The changes listed here are not final.
+
 ## 4.0.6 - 2025-11-21
 ### Fixed
 - Phan: Address PhanPossiblyUndeclaredVariable violations. [#45911]
