@@ -6,6 +6,9 @@ All notable changes to this project will be documented in this file.
 
 This is an alpha version! The changes listed here are not final.
 
+### Fixed
+- Ensure proper flags are used with `json_encode()`.
+
 ## 4.0.6 - 2025-11-21
 ### Fixed
 - Phan: Address PhanPossiblyUndeclaredVariable violations. [#45911]
