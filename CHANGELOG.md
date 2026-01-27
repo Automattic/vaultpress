@@ -8,6 +8,7 @@ This is an alpha version! The changes listed here are not final.
 
 ### Fixed
 - Ensure proper flags are used with `json_encode()`.
+- VaultPress service: avoid Fatal error when receiving an error from the VaultPress service.
 
 ## 4.0.6 - 2025-11-21
 ### Fixed
