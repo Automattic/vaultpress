@@ -6,6 +6,9 @@ All notable changes to this project will be documented in this file.
 
 This is an alpha version! The changes listed here are not final.
 
+### Changed
+- Update package dependencies.
+
 ### Fixed
 - Ensure proper flags are used with `json_encode()`.
 - VaultPress service: avoid Fatal error when receiving an error from the VaultPress service.
