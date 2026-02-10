@@ -9,11 +9,11 @@
 	},
 	"require": {
 		"automattic/jetpack-logo": "^3.0.5",
-		"automattic/jetpack-autoloader": "^5.0.15"
+		"automattic/jetpack-autoloader": "^5.0.16-alpha"
 	},
 	"require-dev": {
 		"yoast/phpunit-polyfills": "^4.0.0",
-		"automattic/jetpack-changelogger": "^6.0.13",
+		"automattic/jetpack-changelogger": "^6.0.14-alpha",
 		"automattic/phpunit-select-config": "^1.0.3"
 	},
 	"scripts": {
