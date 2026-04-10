@@ -2,16 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
-## 4.0.7-alpha - unreleased
-
-This is an alpha version! The changes listed here are not final.
-
+## 4.0.7 - 2026-04-10
 ### Changed
-- Update package dependencies.
+- Update package dependencies. [#46785] [#47021] [#47505]
 
 ### Fixed
-- Ensure proper flags are used with `json_encode()`.
-- VaultPress service: avoid Fatal error when receiving an error from the VaultPress service.
+- Ensure proper flags are used with `json_encode()`. [#46117]
+- Avoid fatal error when receiving an error from the VaultPress service. [#46660]
 
 ## 4.0.6 - 2025-11-21
 ### Fixed
