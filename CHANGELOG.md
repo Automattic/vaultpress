@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## 4.0.8-alpha - unreleased
+
+This is an alpha version! The changes listed here are not final.
+
+### Changed
+- Update package dependencies.
+
 ## 4.0.7 - 2026-04-10
 ### Changed
 - Update package dependencies. [#46785] [#47021] [#47505]
