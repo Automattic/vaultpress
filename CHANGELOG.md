@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 This is an alpha version! The changes listed here are not final.
 
 ### Changed
+- Tested up to WordPress 7.0.
 - Update package dependencies.
 
 ## 4.0.7 - 2026-04-10
