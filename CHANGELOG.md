@@ -11,6 +11,9 @@ This is an alpha version! The changes listed here are not final.
 - Tested up to WordPress 7.0.
 - Update package dependencies.
 
+### Fixed
+- Phan: Address PhanPluginDuplicateConditionalNullCoalescing violations.
+
 ## 4.0.7 - 2026-04-10
 ### Changed
 - Update package dependencies. [#46785] [#47021] [#47505]
