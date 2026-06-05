@@ -8,18 +8,17 @@
 		"issues": "https://github.com/Automattic/jetpack/issues"
 	},
 	"require": {
-		"automattic/jetpack-logo": "^3.0.8",
+		"automattic/jetpack-logo": "^3.0.9-alpha",
 		"automattic/jetpack-autoloader": "^5.0.19-alpha"
 	},
 	"require-dev": {
 		"yoast/phpunit-polyfills": "^4.0.0",
-		"automattic/phpunit-select-config": "^1.0.7"
+		"automattic/phpunit-select-config": "^1.0.8-alpha"
 	},
 	"scripts": {
 		"phpunit": [
 			"phpunit-select-config phpunit.#.xml.dist --colors=always"
 		],
-		"test-coverage": "@composer test-php-coverage",
 		"test-php": "@composer phpunit",
 		"test-php-coverage": "php -dpcov.directory=. ./vendor/bin/phpunit-select-config phpunit.#.xml.dist --coverage-php \"$COVERAGE_DIR/php.cov\""
 	},
