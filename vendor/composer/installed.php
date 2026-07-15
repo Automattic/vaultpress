@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         'automattic/jetpack-autoloader' => array(
-            'pretty_version' => '5.0.21-alpha.1783960952',
-            'version' => '5.0.21.0-alpha1783960952',
-            'reference' => '77cdfbe8c6a4155f3de8d3f042d9521616b83b66',
+            'pretty_version' => '5.0.21',
+            'version' => '5.0.21.0',
+            'reference' => '7be6dbe736e73b7809f22afc6150f1c17eb60de3',
             'type' => 'composer-plugin',
             'install_path' => __DIR__ . '/../automattic/jetpack-autoloader',
             'aliases' => array(),
