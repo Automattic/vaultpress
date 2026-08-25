@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## 4.0.8-alpha - unreleased
+## 5.0.0-alpha - unreleased
 
 This is an alpha version! The changes listed here are not final.
 
@@ -12,6 +12,9 @@ This is an alpha version! The changes listed here are not final.
 - Tested up to WordPress 7.0.
 - Tested up to WordPress 7.1.
 - Update package dependencies.
+
+### Removed
+- Updated PHP version requirements to PHP 7.4 or newer.
 
 ### Fixed
 - Phan: Address PhanPluginDuplicateConditionalNullCoalescing violations.
