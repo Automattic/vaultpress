@@ -8,12 +8,12 @@
 		"issues": "https://github.com/Automattic/jetpack/issues"
 	},
 	"require": {
-		"automattic/jetpack-logo": "^4.0.0-alpha",
-		"automattic/jetpack-autoloader": "^6.0.0-alpha"
+		"automattic/jetpack-logo": "^4.0.0",
+		"automattic/jetpack-autoloader": "^6.0.0"
 	},
 	"require-dev": {
 		"yoast/phpunit-polyfills": "^4.0.0",
-		"automattic/phpunit-select-config": "^1.0.10-alpha"
+		"automattic/phpunit-select-config": "^1.0.11-alpha"
 	},
 	"scripts": {
 		"phpunit": [
