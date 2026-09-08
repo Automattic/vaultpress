@@ -8,7 +8,7 @@
 		"issues": "https://github.com/Automattic/jetpack/issues"
 	},
 	"require": {
-		"automattic/jetpack-logo": "^4.0.0",
+		"automattic/jetpack-logo": "^4.0.1-alpha",
 		"automattic/jetpack-autoloader": "^6.0.0"
 	},
 	"require-dev": {

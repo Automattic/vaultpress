@@ -20,9 +20,9 @@
             'dev_requirement' => false,
         ),
         'automattic/jetpack-logo' => array(
-            'pretty_version' => '4.0.0',
-            'version' => '4.0.0.0',
-            'reference' => '091f3a3ec88d55e8d362e3a64a08537250754b92',
+            'pretty_version' => '4.0.1-alpha.1788909266',
+            'version' => '4.0.1.0-alpha1788909266',
+            'reference' => '4cc72cf74a9d20ab33bdfd2350abade6c3cb543d',
             'type' => 'jetpack-library',
             'install_path' => __DIR__ . '/../automattic/jetpack-logo',
             'aliases' => array(),
