@@ -9,6 +9,7 @@ This is an alpha version! The changes listed here are not final.
 ### Changed
 - Internal: No longer require automattic/jetpack-changelogger as a per-project dev dependency.
 - Remove unneeded development and documentation files from the published plugin.
+- Sidebar: register the VaultPress menu item through Jetpack's admin menu API so it sorts with the other Jetpack pages.
 - Tested up to WordPress 7.0.
 - Tested up to WordPress 7.1.
 - Update package dependencies.
