@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## 5.0.1-alpha - unreleased
+
+This is an alpha version! The changes listed here are not final.
+
+### Changed
+- Update package dependencies.
+
 ## 5.0.0 - 2026-10-14
 ### Changed
 - Internal: No longer require automattic/jetpack-changelogger as a per-project dev dependency. [#48225]
