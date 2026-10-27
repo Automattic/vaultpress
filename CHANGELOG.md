@@ -8,6 +8,7 @@ This is an alpha version! The changes listed here are not final.
 
 ### Changed
 - Update package dependencies.
+- Update the recommended Jetpack bundles in the plugin description.
 
 ## 5.0.0 - 2026-10-14
 ### Changed
